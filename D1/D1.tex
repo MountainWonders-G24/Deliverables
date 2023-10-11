@@ -122,6 +122,7 @@ Vengono elencati di seguito i requisiti funzionali, ossia quei requisiti legati 
 
 \subsection*{RF1 Registrazione}
 Il sito dovrà presentare una pagina dedicata alla registrazione di un nuovo utente, ossia un utente anonimo, che visita il sito. Per effettuare la registrazione sarà necessaria una email valida e una password. Per completare la registrazione sarà inoltre necessaria la verifica tramite un'email di conferma.
+Saranno inoltre richiesti altri dati personali quali nome, cognome, data di nascita
 \begin{enumerate} [leftmargin=40pt]
     \item Nel caso in cui i dati inseriti non siano validi, l'applicazione provvederà a mostrare un messaggio di errore per informare l'utente. 
 \end{enumerate}
@@ -141,8 +142,15 @@ Il sito dovrà presentare una pagina dedicata alla registrazione di un nuovo ute
 Nel sito web sarà presente un account amministratore, che avrà accesso a funzionalità privilegiate e poteri estesi all'interno del sito.\\
 L'account admin sarà fondamentale per la gestione e il controllo completo del sito web. Di seguito sono elencate le principali caratteristiche e le responsabilità dell'account admin:
  \begin{enumerate} [leftmargin=40pt]
-     \item \textbf{eliminare utenti registrati}:\\ qualora un utente registrato non rispetti le norme del sito (RNF7) o voglia eliminare il proprio account, l'applicazione permetterà all'account amministrazione di eliminare l'account con i relativi dati personali inseriti al momento della registrazione.
-     \item \textbf{eliminare una recensione}:\\ Il sito permetterà all'amministratore di eliminare una recensione nel caso in cui questa non rispetti le norme del sito (RNF7). L'operazione verrà notificata all'utente e nel caso in cui l'evento si ripeta eliminerà definitivamente l'account registrato. 
+     \item \textbf{eliminare utenti registrati}:\newline Qualora un utente registrato non rispetti le norme del sito (RNF7) o voglia eliminare il proprio account, l'applicazione permetterà all'account amministrazione di eliminare l'account con i relativi dati personali inseriti al momento della registrazione.
+     \item \textbf{eliminare una recensione}:\newline Il sito permetterà all'amministratore di eliminare una recensione nel caso in cui questa non rispetti le norme del sito (RNF7). L'operazione verrà notificata all'utente e nel caso in cui l'evento si ripeta eliminerà definitivamente l'account registrato. 
+     \item \textbf{modificare e eliminare una montagna o un rifugio}:\newline
+    Sarà permesso all'account amministratore di modificare le informazioni relative ad un rifugio o ad una montagna. Il sito permetterà inoltre di eliminare un rifugio o una montagna nel caso in cui le informazioni siano già presenti (ridondanza della pagina) oppure contenga contenuti inappropriati. 
+    \item \textbf{rispondere alle richieste di supporto}:\newline
+    In caso di richieste di supporto da parte di utenti anonimi o registrati, l'amministratore fornirà adeguato supporto per risolvere le difficoltà.
+    
+    
+ 
  \end{enumerate}
  L'account amministratore sarà già presente quando verrà rilasciata l'applicazione al cliente. 
 
@@ -287,6 +295,7 @@ Per poter rendere affidabile la web app, i dati inseriti dagli utenti verranno s
 
 \subsection*{RNF5 Usabilità}
 Il sito web deve essere progettato in modo tale da risultare intuitivo e accessibile, garantendo una facile fruibilità per un pubblico ampio, composto principalmente da individui con un'età compresa tra i 15 e i 65 anni.\\
+Il sito è stato progettato in modo che dopo 20 minuti l'utente sia in grado di saper utilizzare tutte le funzionalità senza leggere le istruzioni.\\
 Questo pubblico variegato potrà accedere e utilizzare il sito sia tramite dispositivi mobili come smartphone e tablet, sia attraverso computer desktop e portatili, al fine di massimizzare la sua adozione e utilizzo in modo versatile e inclusivo.
 
 
@@ -352,7 +361,7 @@ Questa sarà la web page principale, da cui sarà possibile recarsi nelle seguen
   \end{subfigure}
   \caption{Pagine di Sign-up (RF1)}
 \end{figure}
-All'interno di queste sezioni dedicate, sarà possibile compiere il processo di registrazione (RF1) per l'ingresso di nuovi utenti nel sito web. Nel primo passo di questo processo, verrà chiesto di fornire alcune informazioni fondamentali per la creazione dell'account personale.
+All'interno di queste sezioni dedicate, sarà possibile compiere il processo di registrazione (RF1) per l'ingresso di nuovi utenti nel sito web. Nel primo passo di questo processo, verrà chiesto di fornire alcune informazioni fondamentali per la creazione dell'account personale, oppure sarà possibile registrarsi tramite il proprio account Google, da cui il sito estrapolerà tutte le informazioni necessarie per la registrazione.
 
 Nella prima sezione del modulo di registrazione, ci sarà la possibilità di inserire il nome e cognome. Questo passo iniziale è essenziale per garantire che l'account sia personalizzato e riconoscibile. Successivamente, si potrà procedere al passo successivo del processo, dove si avrà l'opzione di fornire ulteriori dettagli relativi al proprio account.
 
@@ -368,7 +377,7 @@ Nel secondo form, avrai la possibilità di inserire informazioni quali l'indiriz
     \includegraphics[width=0.6\textwidth]{img/Log-in.png}
     \caption{Pagina di log-in (RF2)}
 \end{figure}
-Questa pagina permetterà all'utente registrato di effettuare il login (RF2) tramite la propria email o il proprio username e la password. Una volta inseriti basterà cliccare "Accedi" per effettuare il login. Nel caso in cui l'untente non dovesse ricordarsi la password potrà, cliccando il testo: "Password dimenticata?", richiedere una nuova password che gli sarà inviata via email all'inidirizzo fornito durante la registrazione.
+Questa pagina permetterà all'utente anonimo di effettuare il login (RF2) tramite la propria email o il proprio username e la password, oppure sarà possibile accedere tramite il proprio account Google.. Una volta inseriti basterà cliccare "Accedi" per effettuare il login. Nel caso in cui l'untente non dovesse ricordarsi la password potrà, cliccando il testo: "Password dimenticata?", richiedere una nuova password che gli sarà inviata via email all'inidirizzo fornito durante la registrazione.
 
 
 \subsection*{FE4 Pagina montagne}
@@ -388,7 +397,7 @@ Questa pagina darà la possibilità a qualunque tipo di utente di visionare un e
 \end{figure}
 
 \newpage
-Questa pagina permetterà all'utente di:
+Questa pagina permetterà all'utente registrato di:
 \begin{itemize}
     \item cambiare le informazioni personali (RF6);
     \item cambiare la password (RF6.4);
@@ -402,7 +411,7 @@ Questa pagina permetterà all'utente di:
     \includegraphics[width=0.6\textwidth]{img/Pagina rifugio.png}
     \caption{Pagina rifugio}
 \end{figure}
-Questa pagina permetterà di visualizzare un rifugio e le sue informazioni (RF9), scrollando la pagina verso il basso si troverà una sezione in cui effettuare le recensioni (RF7) e visualizzare le recensioni effettuate da altri utenti registrati.
+Questa pagina permetterà di visualizzare un rifugio e le sue informazioni (RF9). Inoltre, scorrendo la pagina verso il basso si troverà una sezione in cui effettuare le recensioni (RF7) e visualizzare le recensioni effettuate da altri utenti registrati.
 
 
 \newpage
