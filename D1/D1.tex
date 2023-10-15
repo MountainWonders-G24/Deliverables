@@ -238,7 +238,6 @@ Il sito deve fornire la possibilità di accedere alle informazioni meteo relativ
 
 
 
-\newpage
 \subsection*{Tabella riassuntiva}
 
 Di seguito è presente una tabella riassuntiva che associa ad ogni obiettivo, precedentmente descritto, i requisiti funzionali che permettono di raggiungerlo.
@@ -274,6 +273,7 @@ Vengono di seguito elencati e descritti i requisiti non funzionali del progetto.
             \item Presenza di almeno un numero 
         \end{itemize}
     \item Tutti i dati sensibili degli utenti, come informazioni personali e password, saranno crittografati sia in transito che a riposo, ossia quando il dato non viene utilizzato per l'accesso. Saranno implementati protocolli di crittografia standard del settore come TLS/SSL.
+    \item Per aumentare la sicurezza, utilizzeremo un servizio di invio di email di verifica. Quest'ultimo consente di inviare un'email di conferma prima di procedere con la creazione o l'eliminazione di un profilo utente e prima di autorizzare modifiche relative all'indirizzo email e alla password di un account. 
 \end{enumerate}
 
 
@@ -291,6 +291,7 @@ Il sito web dovrà essere compatibile con le ultime versioni dei seguenti browse
 
 \subsection*{RNF4 Affidabilità e disponibilità}
 Per poter rendere affidabile la web app, i dati inseriti dagli utenti verranno salvati all’interno di un database. Su questi verranno effettuati backup, settimanali, per poter eventualmente recuperare i dati in caso di guasti del sistema o di attacchi informatici.
+\\La disponibilità del sito è un elemento fondamentale che garantisce agli utenti l'accesso senza interruzioni in qualsiasi momento.
 
 
 \subsection*{RNF5 Usabilità}
