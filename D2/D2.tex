@@ -145,7 +145,7 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Cambio lingua}
 \end{figure}
 
-\subsubsection*{RF13 Meteo sulla Montagna}
+\subsubsection*{RF13 Meteo della Montagna}
 \begin{figure}[H]
    \centering
    \includegraphics[width=1\textwidth]{img-D2/meteo.png}
@@ -154,21 +154,41 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
 
 
 \subsection*{RF3 Account Amministratore}
-\subsubsection*{RF2 Login}
+\subsubsection*{RF2 Login amministratore}
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.6\textwidth]{img-D2/login_amministratore.png}
+   \includegraphics[width=0.8\textwidth]{img-D2/login_amministratore.png}
     \caption{USE-CASE Login}
 \end{figure}
 
 \subsubsection{RF3.1 Eliminare utenti registrati}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{img-D2/eliminazione_utenti.png}
+    \caption{USE-CASE Eliminazione utenti}
+\end{figure}
 
 \subsubsection{RF3.2 Eliminare recensioni}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{img-D2/eliminazione_recensioni.png}
+    \caption{USE-CASE Eliminazione recensioni}
+\end{figure}
 
 \subsubsection{RF3.3 Modificare/Eliminare montagna o rifugio}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{img-D2/m_e_montagna_rifugio.png}
+    \caption{USE-CASE Modifica/Eliminazione montagne e/o rifugi}
+\end{figure}
 
 \subsubsection{RF3.4 Rispondere alle richieste di supporto}
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\textwidth]{img-D2/richiesta_supporto_amministratore.png}
+    \caption{USE-CASE Modifica/Eliminazione montagne e/o rifugi}
+\end{figure}
 
 
 
@@ -180,190 +200,178 @@ Di seguito vengono descritte le funzioni dell'account registrato.
 \subsubsection*{RF7 Recensioni}
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.5\textwidth]{img-D2/recensioni_registrato.png}
+   \includegraphics[width=0.4\textwidth]{img-D2/recensioni_registrato.png}
     \caption{USE-CASE Recensioni}
 \end{figure}
  
 \subsection*{RF6 Profilo utente}
-
-
-\subsection*{RF10 Aggiungere rifugio o luogo di spicco}
-
-
-
-\subsection*{RF9 Visualizzazione montagne}
-
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{img-D2/profilo_utente.png}
+    \caption{USE-CASE Profilo utente}
+\end{figure}
 
 
 
-
-
-\newpage
-\subsection*{Tabella riassuntiva}
-
-Di seguito è presente una tabella riassuntiva che associa ad ogni obiettivo, precedentmente descritto, i requisiti funzionali che permettono di raggiungerlo.
-
-\begin{center}
-    
-
-\begin{tabular}{|l|l|}
-\hline
-Obiettivi     &Requisiti funzionale          \\
-\hline
-O1            & RF9, RF5\\ \hline 
-O2            & RF1, RF2, RF4, RF7\\ \hline 
-O3            & RF8, RF5\\ \hline 
-O4            & RF3, RF11\\\hline
-O5            & RF10\\\hline 
-\end{tabular}
-\newpage
-\end{center}
-
+{\newpage}
 \section{Requisiti non funzionali}
 
-Vengono di seguito elencati e descritti i requisiti non funzionali del progetto. Ciascun requisito diversamente dai requisiti funzionali è legato alle performance.
+Vengono di seguito elencati e descritti i requisiti non funzionali del progetto. Ciascun requisito diversamente dai requisiti funzionali è legato alle performance.\\
+Per ogni requisito funzionale, viene fatta una descrizione a cui viene accompagnata una misura, per poter verificare se il requisito funzionale è stato soddisfatto o meno.
 
 \subsection*{RNF1 Sicurezza}
 
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         
+         Password sicure&  Gli utenti associano un username al proprio account e una password sicura che permette la protezione dei propri dati personali& Una password sicura deve avere una lunghezza minima di 8 caratteri, lettere sia maiuscole che minuscole, inoltre devono essere presenti almeno un carattere speciale (\&, £, \$, \#, ...) e almeno un numero.\\ \hline
+        Utilizzo TLS/SSL & Tutti i dati sensibili degli utenti, come informazioni personali e password, saranno crittografati sia in transito, sia quando il dato non viene utilizzato
+        per l’accesso & Il link della pagina deve contenere https all'inizio di esso, ossia un protocollo per la comunicazione sicura attraverso Internet. La trasmissione verrà effettuata sulla porta 443 (standard per l'https). \\  \hline
+        Email verificata & L’indirizzo email inserito dall’utente deve essere verificato &
+        Quando l'utente effettua la registrazione, oppure elimina il proprio account, un'email di verifica viene inviata per confermare l'identità.
+        \\ \hline
+    \end{tabular}
+    \caption{Sicurezza}
+\end{table}
 
 \subsection*{RNF2 Performance}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|>{\centering}p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         Performance  
+         &Il sito deve essere in grado di gestire il numero richiesto di utenti senza alcun degrado delle prestazioni. Deve essere inoltre veloce e rendere gradibile la navigazione.
+         &  Le performance vengono stabilite da il tempo di risposta dopo un’operazione dell’utente, per garantire alte performance il tempo massimo di rispsota sarà di 2 secondi.\\ \hline
+    \end{tabular}
+    \caption{Performance}
+    
+\end{table}
 
 
 \subsection*{RNF3 Compatibilità}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        
+         \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline
+         Compatibilità
+         & Gli utenti devono poter accedere al sito web tramite l'utilizzo di qualisiasi dispositivo,  tra computer, tablet e smartphone, utilizzando uno dei browser supportati.
+         & Il sito web deve essere supportato nel 95\% dei dispositivi.\\ \hline
+    \end{tabular}
+    
+    \caption{Compatibilità}
+\end{table}
 
 
 \subsection*{RNF4 Affidabilità e disponibilità}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+         \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline 
+            Affidabilità
+         &  i dati inseriti dagli utenti verranno salvati all’interno di un database. Su questi verranno effettuati backup, per poter eventualmente recuperare i dati in caso di guasti del sistema o di attacchi informatici.
+         & I backup verranno eseguiti ogni 7 giorni.\\ \hline
+         Disponibilità & La disponibilità del sito è la capacità di essere accessibile agli utenti in qualsiasi momento, Per garantire un'ottima disponibilità del sito sarà necessario un ottimo servizio di hosting con strutture ridondanti. & Il sito dovrà essere disponibile almeno 23 ore al giorno, 7 giorni a settimana. \\ \hline
+    \end{tabular}
+    \caption{Affidabilità e disponibilità}
+\end{table}
 
 
 \subsection*{RNF5 Usabilità}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         Usabilità
+         & Gli utenti devono essere in grado di saper utilizzare il sito web in maniera completa senza bisogno di dover utilizzare alcun manuale, in breve tempo.
+         &Un utente deve essere in grado di utilizzare completamente il sito dopo 15 minuti.\\ \hline
+    \end{tabular}
+    \caption{Usabilità}
+\end{table}
 
 
 \subsection*{RNF6 Norme recensioni}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         Norme recensioni
+         & Le recensioni devono essere conformi a norme contro discriminazioni o blasfemie.
+         &Le recensioni che conterranno discriminazioni o blasfemie verranno eliminate dall'account amministratore.\\ \hline
+    \end{tabular}
+    \caption{Norme recensioni}
+\end{table}
 
 \subsection*{RNF7 Gestione delle immagini}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         Gestione immagini
+         & Le immagini devono essere gestite in modo da non provocare un rallentamento del sito web.
+         &La massima dimensione delle immagini caricate dagli utenti è di 3MB.\\ \hline
+    \end{tabular}
+    \caption{Gestione immagini}
+\end{table}
 
 
 \subsection*{RNF8 Privacy}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         GDPR
+         & Il sito raccoglierà e tratterà dati
+        personali degli utenti, dopo aver fornito avvisi chiari sulla privacy e acquisito i consensi necessari.
+         &Conforme\\ \hline
+         Copyright
+         & Sarà rispettato il copyright per tutti i contenuti utilizzati sul sito.
+         &Sarà avitato l’uso non autorizzato di testi, immagini e altri materiali protetti.\\ \hline
+         COPPA
+         & Il sito effettuerà un controllo dell’età dell’utente che si registra.
+         &L'utente che si registra deve avere minimo 13 anni.\\ \hline
+    \end{tabular}
+    \caption{Privacy}
+\end{table}
 
 
 \subsection*{RNF9 Aggiornamenti} 
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
+        \hline  
+         Proprietà & Descrizione & Misura\\
+         \hline      
+         Aggiornamenti
+         & Il sito web sarà sviluppato con un'infrastruttura scalabile, per garantire l'aggiunta di nuove funzionalità e il miglioramento complessivo dell'esperienza utente.
+         & Una volta al mese verrà effettuato un controllo sull'adeguatezza dell'architettura, e in caso verranno effettuati opportuni aggiornamenti.\\ \hline
+    \end{tabular}
+    \caption{Aggiornamenti}
+\end{table}
  
 
 
 \newpage
-\section{Front-end}
-Verranno mostrate di seguito le interfacce delle pagine web con relative descrizioni.
-\subsection*{FE1 Homepage}
-\begin{figure}[ht]
-   \centering
-    \includegraphics[width=0.6\textwidth]{img/Homepage.png}
-    \caption{Homepage}
-\end{figure}
-Questa sarà la web page principale, da cui sarà possibile recarsi nelle seguenti pagine:
-\begin{itemize}
-    \item Profilo (RF6, nella barra di navigazione in alto a destra)
-    \item Pagina delle montagne (RF9) (sotto il nome del sito)
-    \item Pagina rifugi (RF9) (sotto il nome del sito)
-\end{itemize}
 
-
-\subsection*{FE2 Sign-up page}
-\begin{figure}[H]
-  \begin{subfigure}{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{img/Sign-up 1.png} 
-    \caption{Sign-up 1 pagina}
-  \end{subfigure}
-  \hfill % Spazio vuoto orizzontale tra le due immagini
-  \begin{subfigure}{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{img/Sign-up 2.png} 
-    \caption{Sign-up 2 pagina}
-  \end{subfigure}
-  \caption{Pagine di Sign-up (RF1)}
-\end{figure}
-All'interno di queste sezioni dedicate, sarà possibile compiere il processo di registrazione (RF1) per l'ingresso di nuovi utenti nel sito web. Nel primo passo di questo processo, verrà chiesto di fornire alcune informazioni fondamentali per la creazione dell'account personale, oppure sarà possibile registrarsi tramite il proprio account Google.
-
-Nella prima sezione del modulo di registrazione, ci sarà la possibilità di inserire il nome e cognome. Questo passo iniziale è essenziale per garantire che l'account sia personalizzato e riconoscibile. Successivamente, si potrà procedere al passo successivo del processo, dove si avrà l'opzione di fornire ulteriori dettagli relativi al proprio account.
-
-Nel secondo form, avrai la possibilità di inserire informazioni quali l'indirizzo email, che si intende associare al proprio account, e la password che si desidera utilizzare per l'accesso. L'email svolgerà un ruolo cruciale come mezzo di comunicazione e recupero dell'account, mentre la password garantirà la sicurezza dei tuoi dati personali (RNF1).
-
-
-\subsection*{FE3 Log-in page}
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.6\textwidth]{img/Log-in.png}
-    \caption{Pagina di log-in (RF2)}
-\end{figure}
-Questa pagina permetterà all'utente registrato di effettuare il login (RF2) tramite la propria email e la password oppure tramite il proprio account Google. Una volta inseriti basterà cliccare "Accedi" per effettuare il login. Nel caso in cui l'untente non dovesse ricordarsi la password potrà, cliccando il testo: "Password dimenticata?", richiedere una nuova password che gli sarà inviata via email all'inidirizzo fornito durante la registrazione.
-
-
-\subsection*{FE4 Pagina montagne}
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.6\textwidth]{img/Pagina montagne.png}
-    \caption{Pagina elenco montagne (RF9)}
-\end{figure}
-Questa pagina darà la possibilità a qualunque tipo di utente di visionare un elenco con tutte le montagne della zona. Permetterà la ricerca di un rifugio o di una montagna tramite la barra di ricerca in alto e sarà possibile applicare dei filtri per avere risultati pertinenti a quanto si deve cercare. La freccia in basso a destrà perfetterà di tornare nella homepage.
-
-
-\subsection*{FE5 Pagina account}
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.6\textwidth]{img/Pagina account.png}
-    \caption{Pagina account personale (RF6)}
-\end{figure}
-
-\newpage
-Questa pagina permetterà all'utente di:
-\begin{itemize}
-    \item cambiare le informazioni personali (RF6);
-    \item cambiare la password (RF6.4);
-    \item richiedere l'eliminazione dell'account (RF6.5);
-    \item visualizzare le recensioni effettuate con il proprio account(RF9);
-\end{itemize}
-
-\subsection*{FE5 Pagina rifugio (RF9)}
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.6\textwidth]{img/Pagina rifugio.png}
-    \caption{Pagina rifugio}
-\end{figure}
-Questa pagina permetterà di visualizzare un rifugio e le sue informazioni (RF9), scrollando la pagina verso il basso si troverà una sezione in cui effettuare le recensioni (RF7) e visualizzare le recensioni effettuate da altri utenti registrati.
-
-
-\newpage
-\section{Back-end}
-
-Descriviamo il sito dal punto di vista dei servizi con i quale interagisce.
-
-\subsection*{BE1 Gestore Email}
-Il sito si appoggierà ad un sistema che permetterà di inviare un'email e verificare un utente che si deve registrare. Nell'email sarà presente un link per attivazione dell'account. L'utente dovrà quindi cliccare il link e loggarsi per iniziare ad utilizzare il sito.
-
-
-\subsection*{BE2 Google Login API}
-Il sito permetterà di registrarsi e loggarsi tramite un servizio esterno. Al momeno della registrazioni (RF1) o del login(RF2), sarà presente un pulsante per entrare utilizzando il proprio account google. Cliccato il pulsante l'utente verrà reindirizzato alla pagina di google dovre potrà inserire le proprie credenziali.
-
-\subsection*{BE3 Google Maps API}
-La web app si appoggierà alle API di Google Maps per mostrare i rifugi inseriti degli utenti(RF10). Sarà presente una mappa interattiva che mostrerà l'area circostante al rifugio.
-
-
-\subsection*{BE4 Google Weather API}
-Il sito sfrutterà le API di Google Weather per permettere la visualizzazione del meteo di una montagna (RF13). Questa integrazione consentirà agli utenti di accedere in modo agevole e affidabile alle informazioni meteorologiche dettagliate relative a ciascuna montagna, garantendo una previsione precisa delle condizioni meteorologiche future.
-\begin{figure}[H]
-   \centering
-    \includegraphics[width=0.5\textwidth]{img/Backend-diagram.png}
-    \caption{Diagramma back-end}
-\end{figure}
-
+\section{Diagramma di contesto}
 
 \end{document}
