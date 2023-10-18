@@ -108,12 +108,24 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Registrazione}
 \end{figure}
 
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=1\textwidth]{img-D2/diagramma_registrazione.png}
+    \caption{USE-CASE Diagrmma attività registrazione}
+\end{figure}
+
 
 \subsubsection*{RF2 Login}
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.8\textwidth]{img-D2/login_anonimo.png}
     \caption{USE-CASE Login}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=1\textwidth]{img-D2/diagramma_login.png}
+    \caption{USE-CASE Diagrmma attività login}
 \end{figure}
 
 \subsubsection*{RF8 Ricerca}
@@ -206,10 +218,22 @@ Di seguito vengono descritte le funzioni dell'account registrato.
  
 \subsection*{RF6 Profilo utente}
 \begin{figure}[H]
-   \centering
-   \includegraphics[width=0.4\textwidth]{img-D2/profilo_utente.png}
+   \centering   \includegraphics[width=0.3\textwidth]{img-D2/profilo_utente.png}
     \caption{USE-CASE Profilo utente}
 \end{figure}
+
+
+\subsection*{Use case totale}
+\begin{figure}[H]
+   \centering
+    \includegraphics[width=1\textwidth]{img-D2/use_case_completo.png}
+    
+\end{figure}
+Eccezioni:
+\begin{itemize}
+    \item La registrazione manuale la può fare solo un utente anonimo
+    \item La registrazione con Google la può fare solo un utente anonimo
+\end{itemize}{}
 
 
 
@@ -224,7 +248,9 @@ Per ogni requisito funzionale, viene fatta una descrizione a cui viene accompagn
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{0.2\textwidth}|p{0.38\textwidth}|p{0.38\textwidth}|}
-        \hline  
+    
+
+        \hline 
          Proprietà & Descrizione & Misura\\
          \hline      
          
@@ -235,6 +261,7 @@ Per ogni requisito funzionale, viene fatta una descrizione a cui viene accompagn
         Quando l'utente effettua la registrazione, oppure elimina il proprio account, un'email di verifica viene inviata per confermare l'identità.
         \\ \hline
     \end{tabular}
+
     \caption{Sicurezza}
 \end{table}
 
