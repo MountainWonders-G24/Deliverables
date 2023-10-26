@@ -111,7 +111,7 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
 \begin{figure}[H]
    \centering
     \includegraphics[width=1\textwidth]{img-D2/diagramma_registrazione.png}
-    \caption{USE-CASE Diagrmma attività registrazione}
+    \caption{Diagramma attività registrazione}
 \end{figure}
 
 
@@ -125,7 +125,7 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
 \begin{figure}[H]
    \centering
     \includegraphics[width=1\textwidth]{img-D2/diagramma_login.png}
-    \caption{USE-CASE Diagrmma attività login}
+    \caption{ Diagramma attività login}
 \end{figure}
 
 \subsubsection*{RF8 Ricerca}
@@ -173,33 +173,33 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Login}
 \end{figure}
 
-\subsubsection{RF3.1 Eliminare utenti registrati}
+\subsubsection*{RF3.1 Eliminare utenti registrati}
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.6\textwidth]{img-D2/eliminazione_utenti.png}
     \caption{USE-CASE Eliminazione utenti}
 \end{figure}
 
-\subsubsection{RF3.2 Eliminare recensioni}
+\subsubsection*{RF3.2 Eliminare recensioni}
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.4\textwidth]{img-D2/eliminazione_recensioni.png}
     \caption{USE-CASE Eliminazione recensioni}
 \end{figure}
 
-\subsubsection{RF3.3 Modificare/Eliminare montagna o rifugio}
+\subsubsection*{RF3.3 Modificare/Eliminare montagna o rifugio}
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.4\textwidth]{img-D2/m_e_montagna_rifugio.png}
     \caption{USE-CASE Modifica/Eliminazione montagne e/o rifugi}
 \end{figure}
 
-\subsubsection{RF3.4 Rispondere alle richieste di supporto}
+\subsubsection*{RF3.4 Rispondere alle richieste di supporto}
 
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.8\textwidth]{img-D2/richiesta_supporto_amministratore.png}
-    \caption{USE-CASE Modifica/Eliminazione montagne e/o rifugi}
+    \caption{USE-CASE Risposta alla richiesta di supporto}
 \end{figure}
 
 
@@ -400,5 +400,109 @@ Per ogni requisito funzionale, viene fatta una descrizione a cui viene accompagn
 \newpage
 
 \section{Diagramma di contesto}
+Il diagramma di contesto fornisce una visione chiara delle interazioni tra il sistema, gli utenti registrati e l'amministratore. 
+
+\subsection{Descrizione}
+
+\begin{enumerate}
+    \item Attori: Ci sono tre attori principali identificati:
+    \begin{itemize}
+        \item Utente Anonimo (RF5)
+        \item Amministratore (RF3)
+        \item MountainsWonders (il sistema centrale)
+        \item Mail Service
+        \item Google login API 
+        \item Database
+    \end{itemize}
+    
+    \item Interazioni Utente Anonimo - MountainsWonders:  
+    \begin{itemize}
+        \item L'Utente Anonimo può registrarsi direttamente attraverso il sito o tramite Google.(RF1) 
+        \item Può effettuare l'accesso sia usando le credenziali del sito sia tramite Google.(RF2)
+        \item L'Utente Anonimo può richiedere il reset della password.
+        \item Può effettuare ricerche e visualizzare montagne o rifugi basandosi sui risultati di tali ricerche. (RF8)
+        \item Può richiedere supporto e ricevere una risposta. (RF11)
+    \end{itemize}
+    
+    \item Interazioni Amministratore - MountainsWonders:
+    \begin{itemize}
+        \item L'Amministratore può effettuare l'accesso. (RF2)
+        \item Può ricevere messaggi di richiesta di supporto e fornire risposte. (RF3.4)
+    \end{itemize}
+    
+    \item Interazioni MountainsWonders - Database:
+    \begin{itemize}
+        \item Tramite le interazioni con il database il sito si occupa della registrazione, l'autenticazione, le ricerche e altre funzioni correlate. (RF1, RF2, RF8)
+    \end{itemize}
+    
+    \item Interazioni MountainsWonders - Servizi Esterni:
+    \begin{itemize}
+        \item MountainsWonders comunica con un servizio di posta elettronica per inviare email.
+        \item Utilizza Google Login API per gestire l'autenticazione tramite Google. (RF1, RF2)
+    \end{itemize}
+    
+\end{enumerate}
+
+\begin{figure}[H]
+   \centering   \includegraphics[width=1.0\textwidth]{img-D2/contesto_anonimo.png}
+    \caption{Diagramma di contesto Utente Anonimo}
+\end{figure}
+
+
+
+\subsection{Descrizione}
+Analizziamo il contenuto del secondo diagramma di contesto:
+
+
+
+
+\begin{enumerate}
+    \item Attori: Ci sono tre attori principali identificati:
+    \begin{itemize}
+        \item Utente Registrato (RF4)
+        \item Amministratore (RF3)
+        \item MountainsWonders (il sistema centrale)
+    \end{itemize}
+
+
+    
+    \item Interazioni Utente Registrato - MountainsWonders:
+    \begin{itemize}
+        \item L'Utente Registrato può richiedere la visualizzazione dei propri dati personali e ricevere una risposta. (RF6)
+        \item Ha la possibilità di modificare i propri dati personali e ricevere un feedback sulla modifica. (RF6) 
+        \item Può inserire rifugi e ricevere una conferma sull'inserimento.
+        \item Ha la possibilità di inserire o eliminare recensioni e ricevere un feedback su tali azioni. (RF7)
+        \item Può visualizzare le recensioni effettuate. (RF6) 
+        \item  Ha la possibilità di richiedere l'eliminazione del proprio account e ricevere una risposta in merito. (RF6)
+    \end{itemize}
+
+    
+    \item Interazioni Amministratore - MountainsWonders:
+    \begin{itemize}
+        \item Può eliminare utenti (RF3.1)
+        \item Elimina recensioni effettuate dagli utenti (RF3.2)
+        \item Può ricevere messaggi di richiesta di supporto e fornire risposte. (RF3.4)
+    \end{itemize}
+    
+    \item Interazioni MountainsWonders - Servizi Esterni:
+    \begin{itemize}
+        \item  MountainsWonders interagisce con il databse per propagre le operazioni fatte dall'utente e dall'amministratore.
+        
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\begin{figure}[H]
+   \centering   \includegraphics[width=1.0\textwidth]{img-D2/contesto_registrato.png}
+    \caption{Diagramma di contesto Utente Registrato}
+\end{figure}
 
 \end{document}
