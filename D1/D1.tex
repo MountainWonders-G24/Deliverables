@@ -122,7 +122,7 @@ Vengono elencati di seguito i requisiti funzionali, ossia quei requisiti legati 
 
 \subsection*{RF1 Registrazione}
 Il sito dovrà presentare una pagina dedicata alla registrazione di un nuovo utente, ossia un utente anonimo, che visita il sito. Per effettuare la registrazione sarà necessaria una email valida e una password. Per completare la registrazione sarà inoltre necessaria la verifica tramite un'email di conferma.
-Saranno inoltre richiesti altri dati personali quali nome, cognome, data di nascita
+Saranno inoltre richiesti altri dati personali quali nome e cognome.
 \begin{enumerate} [leftmargin=40pt]
     \item Nel caso in cui i dati inseriti non siano validi, l'applicazione provvederà a mostrare un messaggio di errore per informare l'utente. 
 \end{enumerate}
@@ -185,14 +185,13 @@ L'applicazione offrirà agli utenti registrati la possibilità di eseguire diver
 
   
 
-  \item \textbf{Visualizzare dati personali:} in questa sezione, gli utenti avranno accesso ai propri dati personali registrati nell'applicazione. Potranno visualizzare informazioni quali nome, cognome, data di nascita, indirizzo email e altre informazioni pertinenti.
+  \item \textbf{Visualizzare dati personali:} in questa sezione, gli utenti avranno accesso ai propri dati personali registrati nell'applicazione. Potranno visualizzare informazioni quali nome, cognome, indirizzo email e altre informazioni pertinenti.
 
   \item \textbf{Aggiornare dati personali:} l'applicazione permetterà inoltre di apportare modifiche e aggiornamenti ai seguenti dati, garantendo che le informazioni del proprio account siano sempre accurate e aggiornate
   
   \begin{enumerate} [leftmargin=40pt]
-     \item Modificare username
+     \item Modificare nome e cognome
      \item Modificare password
-     \item Modifcare data di nascita
      \item Modificare email
  \end{enumerate}
 
@@ -264,7 +263,7 @@ Vengono di seguito elencati e descritti i requisiti non funzionali del progetto.
 
 \subsection*{RNF1 Sicurezza}
 \begin{enumerate}[label = \alph*]
-    \item Le sezioni dedicate agli utenti registrati (RF4) devono essere protette da accessi non autorizzati, tramite l’utilizzo di username e password. 
+    \item Le sezioni dedicate agli utenti registrati (RF4) devono essere protette da accessi non autorizzati, tramite l’utilizzo di indirizzo email e password. 
     La password deve rispettare determinati criteri di sicurezza, quali: 
         \begin{itemize}
             \item Una lunghezza minima di 8 caratteri
@@ -317,7 +316,7 @@ La dimensione massima consentita per un'immagine sarà 3MB
 \subsection*{RNF8 Privacy}
 Il sito web dovrà essere conforme alle seguenti normative e regolamenti:
 \begin{itemize}
-    \item GDPR (General Data Protection Regulation): il sito raccoglierà e tratterà dati personali degli utenti, nome, cognome, data di nascita, foto dell'utente e email. Saranno forniti avvisi chiari sulla privacy e acquisiti consensi espliciti per la raccolta e l'uso dei dati.
+    \item GDPR (General Data Protection Regulation): il sito raccoglierà e tratterà dati personali degli utenti, nome, cognome, foto dell'utente e email. Saranno forniti avvisi chiari sulla privacy e acquisiti consensi espliciti per la raccolta e l'uso dei dati.
     \item Leggi sul copyright: sarà rispettato il copyright per tutti i contenuti utilizzati sul sito, evitando l'uso non autorizzato di testi, immagini e altri materiali protetti.
     \item COPPA (Children's Online Privacy Protection Act): il sito effettuerà un controllo dell'età dell'utente che si registra, impedendo la registrazione ai minori di 13 anni.
 \end{itemize}
@@ -378,7 +377,7 @@ Nel secondo form, avrai la possibilità di inserire informazioni quali l'indiriz
     \includegraphics[width=0.6\textwidth]{img/Log-in.png}
     \caption{Pagina di log-in (RF2)}
 \end{figure}
-Questa pagina permetterà all'utente anonimo di effettuare il login (RF2) tramite la propria email o il proprio username e la password, oppure sarà possibile accedere tramite il proprio account Google.. Una volta inseriti basterà cliccare "Accedi" per effettuare il login. Nel caso in cui l'untente non dovesse ricordarsi la password potrà, cliccando il testo: "Password dimenticata?", richiedere una nuova password che gli sarà inviata via email all'inidirizzo fornito durante la registrazione.
+Questa pagina permetterà all'utente anonimo di effettuare il login (RF2) tramite la propria email e la password, oppure sarà possibile accedere tramite il proprio account Google. Una volta inseriti basterà cliccare "Accedi" per effettuare il login. Nel caso in cui l'untente non dovesse ricordarsi la password potrà, cliccando il testo: "Password dimenticata?", richiedere una nuova password che gli sarà inviata via email all'inidirizzo fornito durante la registrazione.
 
 
 \subsection*{FE4 Pagina montagne}

@@ -108,11 +108,22 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Registrazione}
 \end{figure}
 
+Questo USE-CASE rappresenta la registrazione dell'utente Anonimo.
+E' possibile effettuare la registrazione manuale, inserendo i dati richiesti, oppure utilizzare un account google esistente.
+
 \begin{figure}[H]
    \centering
-    \includegraphics[width=1\textwidth]{img-D2/diagramma_registrazione.png}
+    \includegraphics[width=0.90\textwidth]{img-D2/diagramma_registrazione.png}
     \caption{Diagramma attività registrazione}
 \end{figure}
+
+Questo diagramma delle attività rappresenta il processo di registrazione dell'utente Anonimo. 
+Arrivato alla pagina di registrazione, l'utente potrà scegliere tra le due modalità presenti.
+
+Se viene scelta la registrazione tramite google, l'utente viene reindirizzato ad un'altra pagina e, una volta scelto l'account, ritornerà automaticamente sul sito.
+
+Se invece si sceglie la registrazione manuele, sarà necessario inserire indirizzo email, password e alcuni dati (nome, cognome); La password deve rispettare dei requisiti per essere considerata sicura (RNF1).
+Una volta inseriti i dati, l'utente riceverà, all'indirizzo email specificato, un link per verficare il suo account. 
 
 
 \subsubsection*{RF2 Login}
@@ -122,11 +133,24 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Login}
 \end{figure}
 
+Questo USE-CASE rappresenta il login dell'utente Anonimo.
+E' possibile effettuare il login manuale, inserendo indirizzo email e password, oppure utilizzare il proprio account google.
+
 \begin{figure}[H]
    \centering
     \includegraphics[width=1\textwidth]{img-D2/diagramma_login.png}
     \caption{ Diagramma attività login}
 \end{figure}
+
+Questo diagramma delle attività rappresenta il processo di login dell'utente Anonimo. 
+Arrivato alla pagina di login, l'utente potrà scegliere tra le due modalità presenti.
+
+Se viene scelta la registrazione tramite google, l'utente viene reindirizzato ad un'altra pagina e, una volta scelto l'account, ritornerà automaticamente sul sito.
+
+Se invece si sceglie il login manuale, sarà necessario inserire indirizzo email e password.
+L'utente ha la possibilità, in questa pagina, di recuperare la password; In questo caso riceverà un'email con un link per cambiare password.
+Se indirizzo email e password sono corretti, l'utente accede al sito.
+
 
 \subsubsection*{RF8 Ricerca}
 \begin{figure}[H]
@@ -134,6 +158,10 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
    \includegraphics[width=0.7\textwidth]{img-D2/ricerca.png}
     \caption{USE-CASE Ricerca}
 \end{figure}
+
+Questo USE-CASE rappresenta la ricerca di un rifugio o di una montagna.
+Il sito utilizzerà le perole chiave fornite dall'utente per trovare una corrispondenza all'interno del database.
+E' possibile effettuare la ricerca sia dall'account anonimo, che dall'account registrato.
 
 \subsubsection*{RF7.1 Visualizza recensioni, RF9 Visualizzare montagne-rifugi}
 \begin{figure}[H]
@@ -157,13 +185,16 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Cambio lingua}
 \end{figure}
 
+Questo USE-CASE rappresenta la possibilità di cambiare lingua.
+Sarà presente un menù, nella parte superiore di ogni pagina, che permetterà di cambiare lingua a preferenza dell'utente. 
+Questo menu elenca tutte le lingue supportate, quali italiano, inglese, tedesco.
+
 \subsubsection*{RF13 Meteo della Montagna}
 \begin{figure}[H]
    \centering
    \includegraphics[width=1\textwidth]{img-D2/meteo.png}
     \caption{USE-CASE Meteo montagna}
 \end{figure}
-
 
 \subsection*{RF3 Account Amministratore}
 \subsubsection*{RF2 Login amministratore}
@@ -172,6 +203,9 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
    \includegraphics[width=0.8\textwidth]{img-D2/login_amministratore.png}
     \caption{USE-CASE Login}
 \end{figure}
+
+Questo USE-CASE rappresenta il login dell'utente Amministatore.
+In questo caso, a differenza dell'utente Anonimo, e' possibile solamente effettuare il login manuale, inserendo username e password dell'account Amministratore preesistente. 
 
 \subsubsection*{RF3.1 Eliminare utenti registrati}
 \begin{figure}[H]
@@ -187,12 +221,20 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
     \caption{USE-CASE Eliminazione recensioni}
 \end{figure}
 
+Questo USE-CASE rappresenta l'eliminazione delle recensioni da parte dall'account Amministratore.
+Alcune informazioni potrebbero essere già presenti (ridondanza della pagina) oppure la recensione potrebbe contenere dei contenuti inappropriati. 
+In questi casi, nella sezione delle recensioni di una montagna o di un rifugio, sarà presente un pulsante per eliminare una recensione.
+
 \subsubsection*{RF3.3 Modificare/Eliminare montagna o rifugio}
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.4\textwidth]{img-D2/m_e_montagna_rifugio.png}
     \caption{USE-CASE Modifica/Eliminazione montagne e/o rifugi}
 \end{figure}
+
+Questo USE-CASE rappresenta l'eliminazione delle montagne o rifugi da parte dall'account Amministratore.
+Come nel caso delle recensioni, alcune informazioni potrebbero essere ridondate oppure contenere contenuti inappropriati, l'amministratore avrà la possibilità di eliminare una montagna dal sistema.
+Oltre all'eliminazione delle informazioni della montagna, vengono eliminate anche le recensioni legate ad essa. 
 
 \subsubsection*{RF3.4 Rispondere alle richieste di supporto}
 
@@ -201,8 +243,6 @@ Vengono elencati di seguito i requisiti funzionali(RF) dell'applicazione, tramit
    \includegraphics[width=0.8\textwidth]{img-D2/richiesta_supporto_amministratore.png}
     \caption{USE-CASE Risposta alla richiesta di supporto}
 \end{figure}
-
-
 
 
 \subsection*{RF4 Account registrato}
@@ -215,18 +255,24 @@ Di seguito vengono descritte le funzioni dell'account registrato.
    \includegraphics[width=0.4\textwidth]{img-D2/recensioni_registrato.png}
     \caption{USE-CASE Recensioni}
 \end{figure}
+
+Questo USE-CASE rappresenta l'inserimento di una recensione da parte dell'account registrato.
+Nella pagina di visualizzazione di un rifugio, sarà presente una sezione per inserire la propria recensione.
  
 \subsection*{RF6 Profilo utente}
 \begin{figure}[H]
-   \centering   \includegraphics[width=0.3\textwidth]{img-D2/profilo_utente.png}
+   \centering   \includegraphics[width=0.5\textwidth]{img-D2/profilo_utente.png}
     \caption{USE-CASE Profilo utente}
 \end{figure}
 
+Questo USE-CASE rappresenta la visualizzazione e la modifica del profilo utente da parte dell'account registrato.
+Nella pagina del profilo personale, sarà possibile visualizzare e modificare le informazioni del proprio profilo (nome, cognome, indirizzo email, password, foto profilo).
+Sarà inoltre possibile richiedere l'eliminazione dell'account dal sistema. 
 
 \subsection*{Use case totale}
 \begin{figure}[H]
    \centering
-    \includegraphics[width=1\textwidth]{img-D2/use_case_completo.png}
+    \includegraphics[width=1.4\textwidth, angle = 90]{img-D2/use_case_completo.png}
     
 \end{figure}
 Eccezioni:
@@ -503,6 +549,200 @@ Analizziamo il contenuto del secondo diagramma di contesto:
 \begin{figure}[H]
    \centering   \includegraphics[width=1.0\textwidth]{img-D2/contesto_registrato.png}
     \caption{Diagramma di contesto Utente Registrato}
+\end{figure}
+\newpage
+\section{Diagramma delle componenti}
+Andiamo ad analizzare le diverse componenti che costituiscono il nostro sistema, considerando il contesto in cui esse si integreranno. Questa analisi comprenderà una descrizione dettagliata di ciascuna componente, inclusi i suoi punti di ingresso e uscita, e si concluderà con la creazione di un diagramma delle componenti.
+
+
+\subsection{Analisi delle componenti}
+
+\subsubsection{Pagina supporto}
+\underline{Descrizione}: questa componente permette ad un utente di richiedere supporto all'amministratore.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Richiesta supporto: questa interfaccia permette di raccogliere i dati presenti nella richiesta di supporto effettuata dall'utente per poi essere utilizzati dall'amministratore.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Risposta supporto: questa interfaccia permette di inviare all'utente la risposta dell'amministratore alla richiesta di supporto.
+\end{itemize}
+
+
+
+\subsubsection{Homepage}
+\underline{Descrizione}: Questa componente si occupa della prima interazione da parte di un utente con il sito web.
+  
+\underline{Interfacce fornite:} 
+\begin{itemize}
+    \item Accesso: questa interfaccia permette ad un utente di effettuare l'accesso al sito, tramite l'utilizzo di un'ulteriore interfaccia
+    \item Richiesta di supporto: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la richiesta di supporto all'amministratore.
+    \item Visualizzazione montagne: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione delle montagne.
+    \item Visualizza rifugi: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione dei rifugi.
+\end{itemize}
+
+
+
+\subsubsection{Pagina montagne}
+\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle montagne presenti all'interno del database esterno.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Visualizzazione montagne: questa interfaccia permette di recuperare la scelta fatta dall'utente per indirizzarlo alla pagina corretta, ossia la pagina che fornisce l'elenco delle montagne.
+\item Montagne: questa interfaccia permette di recuperare l'elenco delle montagne e dei relativi dettagli dal database esterno.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Elenco montagne: questa interfaccia permette di fornire l'elenco delle montagne disponibili con i relativi dettagli.
+\item Aggiunta rifugio: questa componente permette di reindirizzare l'utente alla pagina per l'inserimento di un nuovo rifugio, che verrà gestito da un'altra componente.
+\end{itemize}
+
+
+
+\subsubsection{Pagina inserimento montagna}
+\underline{Descrizione}: questa componente permette all'amministratore di inserire una nuova montagna.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Descrizione montagna: questa interfaccia rappresenta una breve descrizione della montagna, inserita dall'amministratore.
+\item Immagine: questa interfaccia rappresenta un'immagine della montagna, inserita dall'amministratore.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Montagne: questa interfaccia fornisce la montagna inserita dall'amministratore in modo che possa essere poi visualizzata all'interno della componentente "Pagina montagne".
+\end{itemize}
+
+
+
+\subsubsection{Pagina rifugi}
+\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco dei rifugi presenti all'interno del database esterno.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Visualizzazione rifugi: questa interfaccia permette di recuperare la scelta fatta dall'utente per indirizzarlo alla pagina corretta, ossia la pagina che fornisce l'elenco dei rifugi.
+\item Rifugi: questa interfaccia permette di recuperare l'elenco di rifugi e dei relativi dettagli dal database esterno.
+\item Recensioni: questa interfaccia permette di richiedere l'elenco di rifugi e dei relativi dettagli dal database esterno.
+\item Aggiunta recensione: questa componente permette di reindirizzare l'utente alla pagina per l'inserimento di una nuova recensione, operazione che verrà gestita da un'altra componente.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Elenco rifugi: questa interfaccia permette di fornire l'elenco dei rifugi disponibili con i relativi dettagli.
+\end{itemize}
+
+
+
+\subsubsection{Pagina inserimento rifugio}
+\underline{Descrizione}: questa componente permette a un utente di inserire un nuovo rifugio.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Descrizione rifugio: questa interfaccia rappresenta una breve descrizione del rifugio, inserita dall'utente.
+\item Immagine: questa interfaccia rappresenta un'immagine del rifugio, inserita dall'utente.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Rifugi: questa interfaccia fornisce il rifugio inserita dall'utente in modo che possa essere poi visualizzato all'interno della componentente "Pagina Rifugi".
+\end{itemize}
+
+
+
+\subsubsection{Accesso account}
+\underline{Descrizione}: questa componente si occupa della registrazione di nuovi utenti (RF1) e del login degli utenti(RF2). I dati ricevuti verranno trasmessi alle altre componenti.
+
+\underline{Interfacce richieste:} 
+\begin{itemize}
+    \item Accesso: questa comonente si occupa di reindirizzare l'utente nella sezione per effuttuare l'accesso ad un account dopo aver cliccato un bottone nell'homepage.
+    \item Email, password e dati personali: queste componenti sono necessarie per l'accesso di un utente e per la registrazione di un eventuale nuovo utente.
+\end{itemize}
+
+\underline{Interfacce fornite:} 
+\begin{itemize}
+    \item Login utente: questa componente propaga i dati del login fornendoli alle altre componenti che si occuperanno della verifica.
+    \item Registrazione utente: questa componente fornisce i dati della registrazione.Verranno verificati da altre componenti.
+\end{itemize} 
+
+
+
+\subsubsection{Verifica credenziali}
+\underline{Descrizione}: questa componente si occupa della verifica delle credenziali. Verrà effettuato un controllo che confronterà i dati inseriti con quelli presenti nel database. Questa componente si occupa anche della propagazione dei dati personali nelle altre componenti.
+
+\underline{Interfacce richieste:} 
+\begin{itemize}
+    \item Login utente: questa componente richiede i dati di login degli utenti che verranno poi verificati dall'interfaccia.
+    \item Registrazione utente: questa componente si occupa di verificare email, sicurezza della password e i dati personali e controlla la presenza nel database dell'email.   
+\end{itemize}
+
+\underline{Interfacce fornite:} 
+\begin{itemize}
+    \item Dati utente: questa componente fornisce i dati utente alle altre componenti che li richiedono.
+\end{itemize} 
+
+
+
+\subsubsection{Pagina utente}
+\underline{Descrizione}: questa componente si occupa di fornire tutti i dettagli di un determinato utente.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Credenziali utente: questa componente recupera i dati relativi ad un utente per permettere di visualizzare tutti i suoi dati.
+\item Dati personali: questa componente permette di recuperare i dati personali relativi all'utente per poterli visualizzare.
+\item Nuovi dati personali: questa componente permette di modificare i dati personali originali, qualora fosse necessario apportare delle modifiche.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Dati utente: questa componente fornisce all'utente i suoi dati, qualora volesse verificarne la correttezza e/o modificarli.
+\item Aggiunta recensione: questa componente permette ad un utente di aggiungere una nuova recensione tramite un apposito bottone.
+\item Aggiunta rifugio: questa componente permette a un utente di aggiungere un nuovo rifugio tramite un apposito bottone.
+\end{itemize}
+
+
+
+\subsubsection{Pagina recensioni}
+\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle recensioni da lui fatte.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Recensione: questa interfaccia recupera i dati delle nuove recensioni inserite in modo poi che un'altra interfaccia possa usarli.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Recensioni: questa interfaccia fornisce l'elenco delle recensioni eseguite da un utente, in modo che questi dati possano essere utilizzati da un'altra componente.
+\item Elenco recensioni: questa interfaccia fornisce l'elenco delle recensioni eseguite da un utente.
+\end{itemize}
+
+
+
+\subsubsection{Pagina inserimento recensione}
+\underline{Descrizione}: questa componente permette ad un utente di aggiungere una nuova recensione riguardo un rifugio.
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Aggiunta recensione: questa interfaccia permette reindirizzare l'utente verso la pagina per l'aggiunta di una recensione 
+\item Descrizione recensione: questa interfaccia permette di recuperare dal database esterno tutte le descrizioni  di ogni singola recensione eseguita dall'utente.
+\item Valutazione: questa interfaccia permette di recuperare dal database esterno tutte le valutazioni di ogni singola recensione eseguita dall'utente.
+\item Dati utente: questa componente dovrà recuperare i dati dell'utente che sta inserendo la nuova recensione.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Recensione: questa interfaccia permette di inviare i dati della nuova recensione ad un'altra componente in modo da poterli usare per visualizzare l'elenco delle recensioni.
+\end{itemize}
+
+
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1.5\textwidth, angle = 90]{
+    img-D2/diagramma_componenti.png}
+    \caption{Diagramma componenti}
 \end{figure}
 
 \end{document}
