@@ -244,6 +244,15 @@ Oltre all'eliminazione delle informazioni della montagna, vengono eliminate anch
     \caption{USE-CASE Risposta alla richiesta di supporto}
 \end{figure}
 
+\subsubsection*{RF3.5 Inserire montagna}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth]{img-D2/inserire_montagna.png}
+    \caption{USE-CASE Inserire montagna}
+\end{figure}
+Questo USE-CASE rappresenta l'inserimento di nuove montagne non ancora registrate sul sito da parte dall'account Amministratore.
+Consentirà di inserire tutte le informazioni relative ad esse.
+
 
 \subsection*{RF4 Account registrato}
 
@@ -269,10 +278,18 @@ Questo USE-CASE rappresenta la visualizzazione e la modifica del profilo utente 
 Nella pagina del profilo personale, sarà possibile visualizzare e modificare le informazioni del proprio profilo (nome, cognome, indirizzo email, password, foto profilo).
 Sarà inoltre possibile richiedere l'eliminazione dell'account dal sistema. 
 
+
+\subsection*{RF10 Aggiungere rifugio}
+\begin{figure}[H]
+   \centering   \includegraphics[width=0.4\textwidth]{img-D2/aggiungere_rifugio.png}
+    \caption{USE-CASE Aggiungere rifugio}
+\end{figure}
+Sarà possibile a tutti gli utenti registrati l'inserimento di un nuovo rifugio.
+
 \subsection*{Use case totale}
 \begin{figure}[H]
    \centering
-    \includegraphics[width=1.4\textwidth, angle = 90]{img-D2/use_case_completo.png}
+    \includegraphics[width=1.29\textwidth, angle = 90]{img-D2/use_case_completo.png}
     
 \end{figure}
 Eccezioni:
@@ -540,12 +557,6 @@ Analizziamo il contenuto del secondo diagramma di contesto:
 
 
 
-
-
-
-
-
-
 \begin{figure}[H]
    \centering   \includegraphics[width=1.0\textwidth]{img-D2/contesto_registrato.png}
     \caption{Diagramma di contesto Utente Registrato}
@@ -562,109 +573,112 @@ Andiamo ad analizzare le diverse componenti che costituiscono il nostro sistema,
 
 \underline{Interfacce richieste:}
 \begin{itemize}
-\item Richiesta supporto: questa interfaccia permette di raccogliere i dati presenti nella richiesta di supporto effettuata dall'utente per poi essere utilizzati dall'amministratore.
+\item Richiesta supporto: questa interfaccia permette di raccogliere i dati presenti nella richiesta di supporto effettuata dall'utente per poi essere utilizzati dall'amministratore (RF11).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Risposta supporto: questa interfaccia permette di inviare all'utente la risposta dell'amministratore alla richiesta di supporto.
+\item Risposta supporto: questa interfaccia permette di inviare all'utente la risposta dell'amministratore alla richiesta di supporto(RF11).
 \end{itemize}
 
 
 
 \subsubsection{Homepage}
-\underline{Descrizione}: Questa componente si occupa della prima interazione da parte di un utente con il sito web.
+\underline{Descrizione}: questa componente si occupa della prima interazione da parte di un utente con il sito web.
   
 \underline{Interfacce fornite:} 
 \begin{itemize}
-    \item Accesso: questa interfaccia permette ad un utente di effettuare l'accesso al sito, tramite l'utilizzo di un'ulteriore interfaccia
-    \item Richiesta di supporto: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la richiesta di supporto all'amministratore.
-    \item Visualizzazione montagne: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione delle montagne.
-    \item Visualizza rifugi: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione dei rifugi.
+    \item Accesso: questa interfaccia permette ad un utente di effettuare l'accesso al sito, tramite l'utilizzo di una diversa componente (RF2).
+    \item Richiesta di supporto: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la richiesta di supporto all'amministratore (RF11).
+    \item Visualizzazione montagne: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione delle montagne (RF9).
+    \item Visualizza rifugi: questa interfaccia permette di ridirezionare l'utente ad una nuova pagina per la visualizzazione dei rifugi(RF9).
 \end{itemize}
 
 
 
 \subsubsection{Pagina montagne}
-\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle montagne presenti all'interno del database esterno.
+\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle montagne presenti all'interno del database esterno (RF9).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
 \item Visualizzazione montagne: questa interfaccia permette di recuperare la scelta fatta dall'utente per indirizzarlo alla pagina corretta, ossia la pagina che fornisce l'elenco delle montagne.
-\item Montagne: questa interfaccia permette di recuperare l'elenco delle montagne e dei relativi dettagli dal database esterno.
+\item Dati montagne database: questa interfaccia permette di recuperare l'elenco delle montagne e dei relativi dettagli dal database esterno (RF9).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Elenco montagne: questa interfaccia permette di fornire l'elenco delle montagne disponibili con i relativi dettagli.
-\item Aggiunta rifugio: questa componente permette di reindirizzare l'utente alla pagina per l'inserimento di un nuovo rifugio, che verrà gestito da un'altra componente.
+\item Elenco montagne: questa interfaccia fornisce l'elenco delle montagne disponibili con i relativi dettagli (RF9). 
 \end{itemize}
 
 
 
 \subsubsection{Pagina inserimento montagna}
-\underline{Descrizione}: questa componente permette all'amministratore di inserire una nuova montagna.
+\underline{Descrizione}: questa componente permette all'amministratore di inserire una nuova montagna (RF3.5).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
 \item Descrizione montagna: questa interfaccia rappresenta una breve descrizione della montagna, inserita dall'amministratore.
-\item Immagine: questa interfaccia rappresenta un'immagine della montagna, inserita dall'amministratore.
+\item Immagine: questa interfaccia rappresenta un'immagine della montagna, inserita dall'amministratore (RF3.5).
+\item Aggiunta montagna: questa interfaccia permette di reindirizzare l'amministratore alla pagina per l'aggiunta di una nuova montagna all'interno del database, operazione eseguita tramite l'utilizzo di un'altra componente.
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Montagne: questa interfaccia fornisce la montagna inserita dall'amministratore in modo che possa essere poi visualizzata all'interno della componentente "Pagina montagne".
+\item Montagna: questa interfaccia fornisce la montagna inserita dall'amministratore in modo che possa essere poi visualizzata all'interno della componentente "Pagina montagne" (RF9).
 \end{itemize}
 
 
 
 \subsubsection{Pagina rifugi}
-\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco dei rifugi presenti all'interno del database esterno.
+\underline{Descrizione}: questa componente si occupa di recuperare e fornire all'utente l'elenco dei rifugi presenti all'interno del database esterno (RF9).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
-\item Visualizzazione rifugi: questa interfaccia permette di recuperare la scelta fatta dall'utente per indirizzarlo alla pagina corretta, ossia la pagina che fornisce l'elenco dei rifugi.
-\item Rifugi: questa interfaccia permette di recuperare l'elenco di rifugi e dei relativi dettagli dal database esterno.
-\item Recensioni: questa interfaccia permette di richiedere l'elenco di rifugi e dei relativi dettagli dal database esterno.
-\item Aggiunta recensione: questa componente permette di reindirizzare l'utente alla pagina per l'inserimento di una nuova recensione, operazione che verrà gestita da un'altra componente.
+\item Visualizzazione rifugi: questa interfaccia permette di recuperare la scelta fatta dall'utente per indirizzarlo alla pagina corretta, ossia la pagina che fornisce l'elenco dei rifugi(RF9).
+\item Dati rifugi database: questa interfaccia permette di recuperare l'elenco di rifugi e dei relativi dettagli dal database esterno.
+\item Eliminazione rifugio: questa interfaccia all'amministratore di eliminare un rifugio  (RF3.3).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Elenco rifugi: questa interfaccia permette di fornire l'elenco dei rifugi disponibili con i relativi dettagli.
+\item Elenco rifugi: questa interfaccia permette di fornire l'elenco dei rifugi disponibili con i relativi dettagli (RF9).
+\item Aggiunta recensione: questa interfaccia permette di reindirizzare l'utente alla pagina per l'inserimento di una nuova recensione, operazione che verrà gestita da un'altra componente.
+\item Aggiunta rifugio: questa interfaccia permette di reindirizzare l'utente alla pagina per l'inserimento di un nuovo rifugio, che verrà gestito da un'altra componente (RF10).
 \end{itemize}
 
 
 
 \subsubsection{Pagina inserimento rifugio}
-\underline{Descrizione}: questa componente permette a un utente di inserire un nuovo rifugio.
+\underline{Descrizione}: questa componente permette a un utente di inserire un nuovo rifugio(RF10).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
 \item Descrizione rifugio: questa interfaccia rappresenta una breve descrizione del rifugio, inserita dall'utente.
 \item Immagine: questa interfaccia rappresenta un'immagine del rifugio, inserita dall'utente.
+\item Aggiunta rifugio: questa interfaccia permette di reindirizzare l'utente alla pagina per l'inserimento di un nuovo rifugio, che verrà gestito da un'altra componente (RF10).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Rifugi: questa interfaccia fornisce il rifugio inserita dall'utente in modo che possa essere poi visualizzato all'interno della componentente "Pagina Rifugi".
+\item Rifugio: questa interfaccia fornisce il rifugio inserito dall'utente in modo che possa essere poi visualizzato all'interno della componentente "Pagina Rifugi".
 \end{itemize}
 
 
 
 \subsubsection{Accesso account}
-\underline{Descrizione}: questa componente si occupa della registrazione di nuovi utenti (RF1) e del login degli utenti(RF2). I dati ricevuti verranno trasmessi alle altre componenti.
+\underline{Descrizione}: questa componente si occupa della registrazione di nuovi utenti (RF1) e del login degli utenti (RF2). I dati ricevuti verranno trasmessi alle altre componenti.
 
 \underline{Interfacce richieste:} 
 \begin{itemize}
-    \item Accesso: questa comonente si occupa di reindirizzare l'utente nella sezione per effuttuare l'accesso ad un account dopo aver cliccato un bottone nell'homepage.
-    \item Email, password e dati personali: queste componenti sono necessarie per l'accesso di un utente e per la registrazione di un eventuale nuovo utente.
+    \item Accesso: questa interfaccia si occupa di reindirizzare l'utente nella sezione per effettuare l'accesso ad un account dopo aver premuto un bottone nell'homepage (RF2).
+    \item Email, password e dati personali: queste componenti sono necessarie per l'accesso di un utente o per la sua registrazione (RF1).
 \end{itemize}
 
 \underline{Interfacce fornite:} 
 \begin{itemize}
-    \item Login utente: questa componente propaga i dati del login fornendoli alle altre componenti che si occuperanno della verifica.
-    \item Registrazione utente: questa componente fornisce i dati della registrazione.Verranno verificati da altre componenti.
+    \item Login utente: questa interfaccia propaga i dati del login fornendoli alle altre componenti che si occuperanno della verifica.
+    
+    \item Registrazione utente: questa interfaccia fornisce i dati della registrazione.Verranno verificati da altre componenti.
 \end{itemize} 
 
 
@@ -674,48 +688,48 @@ Andiamo ad analizzare le diverse componenti che costituiscono il nostro sistema,
 
 \underline{Interfacce richieste:} 
 \begin{itemize}
-    \item Login utente: questa componente richiede i dati di login degli utenti che verranno poi verificati dall'interfaccia.
-    \item Registrazione utente: questa componente si occupa di verificare email, sicurezza della password e i dati personali e controlla la presenza nel database dell'email.   
+    \item Login utente: questa interfaccia richiede i dati di login degli utenti che verranno poi verificati dall'interfaccia.
+    \item Registrazione utente: questa interfaccia si occupa di verificare email, sicurezza della password e i dati personali e controlla la presenza nel database dell'email.   
 \end{itemize}
 
 \underline{Interfacce fornite:} 
 \begin{itemize}
-    \item Dati utente: questa componente fornisce i dati utente alle altre componenti che li richiedono.
+    \item Credenziali utente: questa interfaccia fornisce le credenziali utente alle altre componenti che li richiedono.
 \end{itemize} 
 
 
 
 \subsubsection{Pagina utente}
-\underline{Descrizione}: questa componente si occupa di fornire tutti i dettagli di un determinato utente.
+\underline{Descrizione}: questa componente si occupa di fornire tutti i dettagli di un determinato utente (RF6).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
-\item Credenziali utente: questa componente recupera i dati relativi ad un utente per permettere di visualizzare tutti i suoi dati.
-\item Dati personali: questa componente permette di recuperare i dati personali relativi all'utente per poterli visualizzare.
-\item Nuovi dati personali: questa componente permette di modificare i dati personali originali, qualora fosse necessario apportare delle modifiche.
+\item Credenziali utente: questa interfaccia recupera le credenziali di un utente dal database esterno per permettere di visualizzare i relativi dati personali (RF6).
+\item Dati personali: questa interfaccia permette di recuperare i dati personali relativi all'utente dal database esterno per poterli visualizzare (RF6).
+\item Nuovi dati personali: questa interfaccia contiene i nuovi dati personali inseriti dall'utente che andranno poi a sostituire quelli originali presenti all'interno del database esterno, qualora fosse necessario apportare delle modifiche (RF6).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
-\item Dati utente: questa componente fornisce all'utente i suoi dati, qualora volesse verificarne la correttezza e/o modificarli.
-\item Aggiunta recensione: questa componente permette ad un utente di aggiungere una nuova recensione tramite un apposito bottone.
-\item Aggiunta rifugio: questa componente permette a un utente di aggiungere un nuovo rifugio tramite un apposito bottone.
+\item Dati utente: questa interfaccia fornisce all'utente i suoi dati, qualora volesse verificarne la correttezza e/o modificarli.
+\item Visualizza recensioni: questa componente permette di reindirizzare l'utente ad una nuova pagina per visualizzare le recensioni da lui effettuate (RF7.1).
 \end{itemize}
 
 
 
 \subsubsection{Pagina recensioni}
-\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle recensioni da lui fatte.
+\underline{Descrizione}: questa componente si occupa di fornire all'utente l'elenco delle recensioni da lui fatte (RF7.1).
 
 \underline{Interfacce richieste:}
 \begin{itemize}
-\item Recensione: questa interfaccia recupera i dati delle nuove recensioni inserite in modo poi che un'altra interfaccia possa usarli.
+\item Recupero recensione database: questa interfaccia recupera i dati delle nuove recensioni inserite in modo poi che un'altra interfaccia possa usarli.
+\item Visualizza recensioni: questa interfaccia recupera la scelta dell'utente, ossia quella di essere reindirizzato alla pagina delle recensioni (RF7.1). 
+\item Elimina recensione: questa interfaccia recupera la scelta dell'amministrazione per eliminare una recensione (RF3.1).
 \end{itemize}
 
 \underline{Interfacce fornite:}
 \begin{itemize}
 \item Recensioni: questa interfaccia fornisce l'elenco delle recensioni eseguite da un utente, in modo che questi dati possano essere utilizzati da un'altra componente.
-\item Elenco recensioni: questa interfaccia fornisce l'elenco delle recensioni eseguite da un utente.
 \end{itemize}
 
 
@@ -725,7 +739,7 @@ Andiamo ad analizzare le diverse componenti che costituiscono il nostro sistema,
 
 \underline{Interfacce richieste:}
 \begin{itemize}
-\item Aggiunta recensione: questa interfaccia permette reindirizzare l'utente verso la pagina per l'aggiunta di una recensione 
+\item Aggiunta recensione: questa interfaccia permette reindirizzare l'utente verso la pagina per l'aggiunta di una recensione .
 \item Descrizione recensione: questa interfaccia permette di recuperare dal database esterno tutte le descrizioni  di ogni singola recensione eseguita dall'utente.
 \item Valutazione: questa interfaccia permette di recuperare dal database esterno tutte le valutazioni di ogni singola recensione eseguita dall'utente.
 \item Dati utente: questa componente dovrà recuperare i dati dell'utente che sta inserendo la nuova recensione.
@@ -734,6 +748,25 @@ Andiamo ad analizzare le diverse componenti che costituiscono il nostro sistema,
 \underline{Interfacce fornite:}
 \begin{itemize}
 \item Recensione: questa interfaccia permette di inviare i dati della nuova recensione ad un'altra componente in modo da poterli usare per visualizzare l'elenco delle recensioni.
+\end{itemize}
+
+
+
+\subsubsection{Pagina amministratore}
+\underline{Descrizione}: questa componente fornisce tutti i dettagli dell'utente amministratore (RF3).
+
+\underline{Interfacce richieste:}
+\begin{itemize}
+\item Credenziali utente: questa interfaccia permette di reindirizzare l'utente verso la pagina con i relativi permessi per l'amministratore.
+\item Descrizione recensione: questa interfaccia permette di recuperare dal database esterno tutte le descrizioni  di ogni singola recensione eseguita dall'utente.
+\end{itemize}
+
+\underline{Interfacce fornite:}
+\begin{itemize}
+\item Risposta richiesta: questa interfaccia permette di inviare la risposta ad una richiesta di supporto alle altri componenti da parte dell'amministratore.
+\item Eliminazione recensione: questa componente permette l'eliminazione di una recensione che non rispetta i determianti criteri (RNF6).
+\item Aggiunta montagna: questa componente consente l'aggiunta di nuove montagne (RF3.3)
+\item Eliminazione rifugio: questa interfaccia permette di eliminare un rifugio nel caso non rispetti i criteri o esista un duplicato (RF3.3)
 \end{itemize}
 
 
