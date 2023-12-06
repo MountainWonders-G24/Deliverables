@@ -101,15 +101,34 @@ Il presente documento riporta i class diagram del sistema MountainWonders. Lo sc
 \section{Elenco delle classi}
 In questa sezione mostreremo e documenteremo il diagramma delle classi. Affronteremo una descrizione approfondita dei metodi e dei parametri forniti e fondamentali al fine di realizzare un sito web consono a quello che è stato presentato nei precedenti documenti. 
 
+\subsection{Database}
+Procediamo alla definizione della classe per la connessione ad database, che conterrà solamente la stringa di connessione per accedere al database.
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.35\textwidth] {D3/img/class_diagram_database.png}
+    \caption{Class diagram database}
+\end{figure}
+
+\subsection{Pagine principali}
+Procediamo alla definizione delle classi che rappresenteranno le pagine principali dell'applicazione web. \\
+La prima è la PaginaUtente che conterrà le info di ciascun utente registrato e i metodi per modificare alcuni di essi.\\
+Segue poi la pagina per la visualizzazione delle montagne e quella per la visualizzazione dei rifugi, che verranno descritte in seguito.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1\textwidth] {D3/img/class_diagram_homepage.png}
+    \caption{Class diagram pagine principali}
+\end{figure}
+
 \subsection{Accounts}
-Questo conglomerato di classi racchiude le varie tipologie di account presenti nella pagina web. Ne sono presenti 3 tipologie: 
+Questo insieme di classi racchiude le varie tipologie di account presenti nella pagina web. Esistono infatti 3 tipologie di account:
 \begin{itemize}
     \item AccountAnonimo
     \item AccountRegistrato
     \item AccountAmministratore
 \end{itemize} 
 Le classi AccountAmministratore e AccountRegistrato ereditano gli argomenti della classe AccountAnonimo, non sarà possibile ereditare i metodi register() e login() poiché sono esclusivi della classe AccountAnonimo.\\
-Una volta effettuato il login in base alla tipologia di utente saranno presenti diverse tipologie di metodi basate sulla gerarchia dell'account.
+Una volta effettuato il login, in base alla tipologia di utente saranno presenti metodi diversi per ciascun utente.
 \begin{figure}[H]
    \centering
     \includegraphics[width=0.6\textwidth]{D3/img/class_diagram_accounts.png}
@@ -119,30 +138,30 @@ Una volta effettuato il login in base alla tipologia di utente saranno presenti 
 \newpage
 \subsection{Montagna}
 Procediamo alla definizione delle classi relative alle montagne. \\
-Queste due classi rappresentato: la prima la pagina web relativa alle montagne,  la seconda rappresenta l'oggetto montagna che verrà salvato all'interno del database. 
+La classe PaginaMontagne andrà a contenere l'elenco delle montagne presenti all'interno del database, e i relativi filtri applicati al momento della ricerca in modo da mostrare i dati in base alle preferenze dell'utente.\\
+La pagina Montagna, invece, rappresenta l'oggetto del mondo reale che verrà salvato all'interno del database, dotato di tutti gli attributi necessari.
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.25\textwidth] {D3/img/class_diagram_mountains.png}
+   \includegraphics[width=0.35\textwidth] {D3/img/class_diagram_mountains.png}
     \caption{Class diagram montagne}
 \end{figure}
 \newpage
 \subsection{Rifugio}
-Le due classi presentate in seguito contengono una delle entità cardine del sito web: i rifugi.
-\\ Nei seguenti diagrammi sono decritti gli oggetti: PaginaRifugi e Rifugio.
-\\ PaginaRifugi è la classe che rappresenta la pagina web con l'elenco di tutti i rifugi (scremati se vengono applicati dei filtri oppure tutti i rifugi presenti nel database nel caso contrario). Rifugio  è la classe che contiene le informazioni di ogni singolo rifugio insieme all'insieme di recensioni che sono state effettuate per ognuno di essi.
+Le due classi presentate in seguito contengono le pagine per le funzionalità dei rifugi.\\
+PaginaRifugi è la classe che rappresenta la pagina web con l'elenco di tutti i rifugi (scremati se vengono applicati dei filtri oppure tutti i rifugi presenti nel database nel caso contrario).\\
+Rifugio  è la classe che contiene le informazioni di ogni singolo rifugio insieme all'insieme di recensioni che sono state effettuate per ognuno di essi.\\
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.25\textwidth] {D3/img/class_diagram_refuges.png}
+   \includegraphics[width=0.30\textwidth] {D3/img/class_diagram_refuges.png}
     \caption{Class diagram rifugi}
 \end{figure}
-\newpage
 \subsection{Recensione}
-All'interno del seguente insieme vengono rappresentate le classi necessarie per gestire le recensioni.
-\\ La classe PaginaRecensioni contiene e mostrerà tutte le recensioni effettuate da un utente. La classe Recensione contiene tutte le informazioni relative ad una recensione.
+All'interno del seguente insieme vengono rappresentate le classi necessarie per gestire le recensioni.\\
+La classe PaginaRecensioni contiene e mostrerà tutte le recensioni effettuate da un utente. La classe Recensione contiene tutte le informazioni relative ad una recensione.
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.5\textwidth] {D3/img/class_diagram_reviews.png}
-    \caption{Class diagram rifugi}
+   \includegraphics[width=0.70\textwidth] {D3/img/class_diagram_reviews.png}
+    \caption{Class diagram recensioni}
 \end{figure}
 
 \subsection{Filtri}
@@ -154,11 +173,16 @@ Tra i filtri dei rifugi c'è anche la montagna a cui appartiene, in modo da pote
    \includegraphics[width=0.5\textwidth] {D3/img/class_diagram_filters.png}
     \caption{Class diagram filtri}
 \end{figure}
-
-
+\newpage
+\subsection{Class diagram totale}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth] {D3/img/class_diagram_total.png}
+    \caption{Class diagram totale}
+\end{figure}
 
 \newpage
-\section{Diagramma classi - OCL}
+\section{OCL}
 In questa sezione verranno rappresentate le interazioni tra le classi utilizzando OCL (Object Contraint Language) in modo da poter descrivere concetti non rappresentabili tramite diagramma delle classi.
 
 \subsection{PaginaMontagne}
@@ -166,23 +190,23 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
    \item L'addMountain() e la deleteMountain() di una montagna può essere eseguito solo se l'accesso è stato fatto dall'amministratore, la deleteMontagna() è possibile solo se sono presenti montagne e corrispondono alla montagna da eliminare. \newline \newline
    In linguaggio OCL:\newline
    \textbf{context}  PaginaMontagna::addMountain(Montagna: montagna)\newline
-    \textbf{pre} AccountAnonimo.role == "Admin" \newline
-    \textbf{post} : PaginaMontagna.mountains = PaginaMontagna.mountains+montagna\newline\newline
+    \textbf{pre}: AccountAnonimo.role == "Admin" \newline
+    \textbf{post}: PaginaMontagna.mountains = PaginaMontagna.mountains+montagna\newline\newline
     \textbf{context}  PaginaMontagna::deleteMontagna(int: idMontagna)\newline
-    \textbf{pre} PaginaMontagna.mountains != NULL and PaginaMontagna.mountains.id == idMontagna and AccountAnonimo.role == "Admin" \newline
-    \textbf{post} : PaginaMontagna.mountains.id = NULL 
+    \textbf{pre}: PaginaMontagna.mountains != NULL and PaginaMontagna.mountains.id == idMontagna and AccountAnonimo.role == "Admin" \newline
+    \textbf{post}: PaginaMontagna.mountains.id = NULL 
 \end{itemize}
 
 \subsection{Montagna}
 \begin{itemize}
     \item addRefuge() è una funzionalità che può essere eseguita solo da un account registrato. \newline\newline In linguaggio OCL:\newline
     \textbf{context} Montagna::addRefuge(Rifugio: rifugio)\newline
-    \textbf{pre} AccountAnonimo.role == "Registrato" \newline
-    \textbf{post} Montagna.refuges= Montagna.refuges+rifugio 
+    \textbf{pre}: AccountAnonimo.role == "Registrato" \newline
+    \textbf{post}: Montagna.refuges= Montagna.refuges+rifugio 
     \item deleteRefuge() ha un parametro int che indica l'id del rifugio che deve essere eliminato, per questo motivo deve essere maggiore di 0, questa funzionalità è esclusiva di un ammministratore. Quando si elimina un rifugio vengono eliminate tutte le recensioni legate al rifugio. \newline\newline In linguaggio OCL:\newline
     \textbf{context} Montagna::deleteRefuge(int: idRifugio)\newline
-    \textbf{pre} AccountAnonimo.role == "Admin" \newline and Montagna.refuges.refugeId == idRifugio \newline
-    \textbf{post} Montagna.refuges.reviews = NULL and Montagna.refuges.refugeId = NULL 
+    \textbf{pre}: AccountAnonimo.role == "Admin" \newline and Montagna.refuges.refugeId == idRifugio \newline
+    \textbf{post}: Montagna.refuges.reviews = NULL and Montagna.refuges.refugeId = NULL 
     
     
 \end{itemize}
@@ -191,17 +215,17 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
 \begin{itemize}
     \item addReview() è una funzionalità che può essere eseguita solo da un account registrato. Una volta aggiunta la recensione verrà chiamato il metodo updateAvgRating() in modo tale da aggiornare il valore precedente di avgRating. \newline \newline In linguaggio OCL:\newline
     \textbf{context} Rifugio::addReview(Recensione: recensione) \newline 
-    \textbf{pre} AccountAnonimo.role == "Registrato"\newline
-    \textbf{post} Rifugio.reviews = Rifugio.reviews+recensione and Rifugio::updateAvgRating() 
+    \textbf{pre}: AccountAnonimo.role == "Registrato"\newline
+    \textbf{post}: Rifugio.reviews = Rifugio.reviews+recensione and Rifugio::updateAvgRating() 
     \item deleteReview() è una funzionalità che può essere eseguita solo da un account registrato o amministratore e solo se esiste una recensione a cui si fa riferimento.\newline \newline In linguaggio OCL:\newline
     \textbf{context} Rifugio::deleteReview(int: idRecensione) \newline
-    \textbf{pre} AccountAnonimo.role == "Registrato" \newline 
+    \textbf{pre}: AccountAnonimo.role == "Registrato" \newline 
     and Recensione.reviews.reviewId==idRecensione \newline
-    \textbf{post} Rifugio.reviews.reviewId = NULL  
+    \textbf{post}: Rifugio.reviews.reviewId = NULL  
     \item modifyRefuge() è una funzionalità esclusiva dell'amministratore, ha tre parametri che contengono i nuovi valori da assegnare agli attributi che possono essere modificati. \newline \newline In linguaggio OCL:\newline
     \textbf{context} Rifugio::modifyRefuge(String: nomeRifugio, int idMontagna, Position: posizione) \newline
-    \textbf{pre} AccountAnonimo.role == "Admin" \newline
-    \textbf{post} Rifugio.refugeName = nomeRifugio and Rifugio.mountainId = idMontagna and Rifugio.position=posizione 
+    \textbf{pre}: AccountAnonimo.role == "Admin" \newline
+    \textbf{post}: Rifugio.refugeName = nomeRifugio and Rifugio.mountainId = idMontagna and Rifugio.position=posizione 
 \end{itemize}
 
 
@@ -223,10 +247,10 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
 \begin{itemize}
     \item Nel caso in cui l'utente non abbia effettuato il login, la funzione viewUser() dell'homepage reindirizzerà l'utente nella pagina di login. \newline \newline In linguaggio OCL:\newline
     \textbf{context} AccountAnonimo.role \newline
-    \textbf{pre} AccountAnonimo.role == "Anonimo"\newline
-    \textbf{post} AccountAnonimo::login()\newline
-    \textbf{pre} AccountAnonimo.role != "Anonimo" \newline
-    \textbf{post} Homepage::viewUser()
+    \textbf{pre}: AccountAnonimo.role == "Anonimo"\newline
+    \textbf{post}: AccountAnonimo::login()\newline
+    \textbf{pre}: AccountAnonimo.role != "Anonimo" \newline
+    \textbf{post}: Homepage::viewUser()
 \end{itemize}
 
 \subsection{ChatSupporto}
@@ -250,13 +274,17 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
 \subsection{AccountAnonimo}
 \begin{itemize}
     \item Il login può essere effettuato solo da un utente che ha già eseguito la registrazione in precedenza e quindi le sue credenziali sono già presenti all'interno del database. \newline \newline In linguaggio OCL:\newline
-    \textbf{context} AccountAnonimo.login() 
+    \textbf{context} AccountAnonimo.login() \newline
     \textbf{inv} AccountAnonimo.role == "Anonimo"
     
     \item Le funzioni registerGoogle, loginGoogle vengono effettuate utilizzando le API google, i controlli vengono fatti da servizi esterni (Google).
 \end{itemize}
 
-
-
+\subsection{Diagramma delle classi con OCL}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1\textwidth] {D3/img/class_diagram_OCL.png}
+    \caption{Class diagram con OCL}
+\end{figure}
 
 \end{document}
