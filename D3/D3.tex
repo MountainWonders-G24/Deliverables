@@ -174,6 +174,7 @@ Tra i filtri dei rifugi c'è anche la montagna a cui appartiene, in modo da pote
     \caption{Class diagram filtri}
 \end{figure}
 \newpage
+
 \subsection{Class diagram totale}
 \begin{figure}[H]
    \centering
@@ -197,6 +198,13 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \textbf{post}: PaginaMontagna.mountains.id = NULL 
 \end{itemize}
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth] {D3/img/pagina_montagne_OCL.png}
+    \caption{OCL Pagina Montagne}
+\end{figure}
+
+
 \subsection{Montagna}
 \begin{itemize}
     \item addRefuge() è una funzionalità che può essere eseguita solo da un account registrato. \newline\newline In linguaggio OCL:\newline
@@ -206,10 +214,16 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \item deleteRefuge() ha un parametro int che indica l'id del rifugio che deve essere eliminato, per questo motivo deve essere maggiore di 0, questa funzionalità è esclusiva di un ammministratore. Quando si elimina un rifugio vengono eliminate tutte le recensioni legate al rifugio. \newline\newline In linguaggio OCL:\newline
     \textbf{context} Montagna::deleteRefuge(int: idRifugio)\newline
     \textbf{pre}: AccountAnonimo.role == "Admin" \newline and Montagna.refuges.refugeId == idRifugio \newline
-    \textbf{post}: Montagna.refuges.reviews = NULL and Montagna.refuges.refugeId = NULL 
-    
-    
+    \textbf{post}: Montagna.refuges.reviews = NULL and Montagna.refuges.refugeId = NULL     
 \end{itemize}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth] {D3/img/montagna_OCL.png}
+    \caption{OCL Montagna}
+\end{figure}
+
+
 
 \subsection{Rifugio}
 \begin{itemize}
@@ -228,13 +242,26 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \textbf{post}: Rifugio.refugeName = nomeRifugio and Rifugio.mountainId = idMontagna and Rifugio.position=posizione 
 \end{itemize}
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\textwidth] {D3/img/rifugio_OCL.png}
+    \caption{OCL Rifugio}
+\end{figure}
+
 
 \subsection{Recensione}
 \begin{itemize}
     \item Rating recensione compreso da 1 a 5. \newline \newline In linguaggio OCL:\newline
     \textbf{context} Recensione \textbf{inv}: Recensione.rating >= 1 and Recensione.rating <= 5
-     
 \end{itemize}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth] {D3/img/recensione_OCL.png}
+    \caption{OCL Recensione}
+\end{figure}
+
+
 
 \subsection{Posizione}
 \begin{itemize}
@@ -242,6 +269,13 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \item Altitudine del rifugio compresa da 0 a 5000 metri. \newline \newline In linguaggio OCL:\newline
     \textbf{context} Posizione \textbf{inv}: Posizione.altitude >= 0 and Posizione.altitude <= 5000
 \end{itemize}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\textwidth] {D3/img/posizione_OCL.png}
+    \caption{OCL Posizione}
+\end{figure}
+
 
 \subsection{Homepage}
 \begin{itemize}
@@ -252,6 +286,13 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \textbf{pre}: AccountAnonimo.role != "Anonimo" \newline
     \textbf{post}: Homepage::viewUser()
 \end{itemize}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\textwidth] {D3/img/homepage_OCL.png}
+    \caption{OCL Homepage}
+\end{figure}
+
 
 \subsection{ChatSupporto}
 \begin{itemize}
@@ -271,6 +312,13 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \textbf{inv} AccountAnonimo.role == "Admin"
 \end{itemize}
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.7\textwidth] {D3/img/chat_supporto_OCL.png}
+    \caption{OCL Chat supporto}
+\end{figure}
+
+
 \subsection{AccountAnonimo}
 \begin{itemize}
     \item Il login può essere effettuato solo da un utente che ha già eseguito la registrazione in precedenza e quindi le sue credenziali sono già presenti all'interno del database. \newline \newline In linguaggio OCL:\newline
@@ -280,10 +328,17 @@ In questa sezione verranno rappresentate le interazioni tra le classi utilizzand
     \item Le funzioni registerGoogle, loginGoogle vengono effettuate utilizzando le API google, i controlli vengono fatti da servizi esterni (Google).
 \end{itemize}
 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.4\textwidth] {D3/img/account_anonimo_OCL.png}
+    \caption{OCL Account anonimo}
+\end{figure}
+
+
 \subsection{Diagramma delle classi con OCL}
 \begin{figure}[H]
    \centering
-   \includegraphics[width=1\textwidth] {D3/img/class_diagram_OCL.png}
+   \includegraphics[width=1.1\textwidth] {D3/img/class_diagram_OCL.png}
     \caption{Class diagram con OCL}
 \end{figure}
 
