@@ -182,7 +182,7 @@ Per maggior chiarezza, il diagramma delle api è stato suddiviso.
     \item Api diagram 4
     \begin{figure}[H]
     \centering
-   \includegraphics[width=0.7\textwidth] {D4/img/api_diagram_mountains.png}
+   \includegraphics[width=0.8\textwidth] {D4/img/api_diagram_mountains.png}
     \caption{Mountains api diagram}
 \end{figure}
     \item Api diagram 5
@@ -204,8 +204,52 @@ Per maggior chiarezza, il diagramma delle api è stato suddiviso.
 Verrà di seguito presentato come è stata sviluppata la nostra applicazione web, mostrando prima i modelli utilizzati all'interno del database per salvare le informazioni necessarie, proseguendo poi con la descrizione delle API per poi concludere con la descrizione del frontend.
 
 \subsection{Struttura progetto}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.3\textwidth] {D4/img/project_structure.png}
+    \caption{Stuttura del progetto}
+\end{figure}
+La cartella principale è app, che contiene le sottocartelle per:
+\begin{itemize}
+    \item api
+    \item pagine front-end
+    \item test
+\end{itemize}
+
+La cartella api contiene le api necessarie per l'applicazione, che verranno descritte in dettaglio nella sezione "Swagger".
+\newline
+La cartella auth contiene lo sviluppo frontend per le pagine di login e registrazione di un utente.
+\newline
+La cartella main-pages contiene lo sviluppo frontend per le pagine principali dell'applicazione, ossia la pagina delle montagne e quella dei rifugi.
+\newline
+Nella cartella modelli sono contenuti i modelli utilizzati dall'applicazione, ossia il modello utente, montagna e rifugi. Questi verranno descritti meglio in seguito nella sezione modelli. \newline
+Nella cartella test sono contenuti tutti i test eseguiti sulle api.
 
 \subsection{Dipendenze}
+Elenchiamo di seguito le dipendenze esterne utilizzate dall'applicazione Mountain Wonders:
+\begin{itemize}
+    \item mongoose from mongoose utilizzato per la connessione al database
+    \item nextRequest, nextResponse from next/server per una continua interazione tra database e applicazione
+    \item jwt from jsonwebtoken per la criptatura dei dati lato client
+    \item cookies from next/headers per il salvataggio dello stato al login di un utente
+    \item bcrypt from bcryptjs per la protezione dei dati lato server 
+    \item axios from axios per la comunicazione con il server
+    \item useRouter from next/navigation per la redirezione delle api
+    \item React from react per la creazione dell'interfaccia utente
+    \item swagger-ui-react/swagger-ui.css per la documentazione delle api
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \subsection{Modelli}
@@ -216,7 +260,7 @@ Il primo modello è quello dell'utente che si registra nella nostra applicazione
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth] {D4/img/user_model.png}
+    \includegraphics[width=0.35\textwidth] {D4/img/user_model.png}
     \caption{Logout api diagram}
     \end{figure}
 
@@ -228,7 +272,7 @@ Segue poi il modello della montagna.
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth] {D4/img/mountain_model.png}
+    \includegraphics[width=0.35\textwidth] {D4/img/mountain_model.png}
     \caption{Logout api diagram}
     \end{figure}
 Questo modello è dotato di parametri necessari per il riconoscimento da parte degli utenti. \newline
@@ -239,7 +283,7 @@ L'ultimo modello dell'applicazione è quello che rappresenta i rifugi.
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth] {D4/img/refuge_model.png}
+    \includegraphics[width=0.35\textwidth] {D4/img/refuge_model.png}
     \caption{Logout api diagram}
     \end{figure}
 
@@ -402,6 +446,11 @@ Se invece l'utente seleziona una montagna, viene ridirezionato alla pagina segue
     \includegraphics[width=1\textwidth] {D4/img/mountain_page.png}
     \caption{Pagina rifugi di una montagna}
 \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/add_refuge.png}
+    \caption{Aggiunta rifugio in una montagna}
+\end{figure}
 Questa pagina permette a qualsiasi utente di visualizzare tutti i rifugi di una montagna e i relativi dettagli.\newline
 Per gli utenti anonimi che visitano il sito, l'unica operazione che possono eseguire è la ricerca di un rifugio tra quelli presenti all'interno della montagna selezionata in precedenza. \newline
 E' possibile inserire all'interno della barra di ricerca una qualsiasi stringa: se la stringa è contenuta in almeno uno dei nomi dei rifugi, la ricerca mostrerà queste montagne con i relativi dettagli. \newline
@@ -414,9 +463,12 @@ Dopo  aver cliccato il bottone "aggiungi" del form, verrà mostrato il messaggio
 
 \subsubsection{Pagina rifugi}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth] {D4/img/refuge_page.png}
+    \centering    \includegraphics[width=1\textwidth] {D4/img/refuge_page.png}
     \caption{Pagina rifugi}
+\end{figure}
+\begin{figure}[H]
+    \centering    \includegraphics[width=1\textwidth] {D4/img/add_refuge_all.png}
+    \caption{Aggiunta rifugio alla lista}
 \end{figure}
 Questa pagina permette a qualsiasi utente di visualizzare tutti i rifugi presenti all'interno del database e i relativi dettagli. \newline
 Per gli utenti anonimi che visitano il sito, l'unica operazione che possono eseguire è la ricerca di un rifugio tra quelli presenti all'interno del database. \newline
@@ -427,9 +479,79 @@ Nel caso in cui l'utente sia amministratore, oltre alla ricerca avrà anche il p
 Nel caso in cui l'utente sia un utente registrato, oltre alla ricerca avrà anche il permesso per poter aggiungere un rifugio all'interno del database: dopo aver cliccato sul bottone per l'aggiunta di un rifugio, nella pagina verrà mostrato un form in cui l'utente dovrà inserire i dettagli del nuovo rifugio. \newline
 Dopo  aver cliccato il bottone "aggiungi" del form, verrà mostrato il messaggio di risposta, nel caso l'operazione sia andata a buon fine o meno.
 
-
+\newpage
 \subsection{Testing}
+Per condurre le operazioni di testing, abbiamo utilizzato la libreria Jest in combinazione con il metodo fetch per verificare e chiamare le API. Tutti i test svolti sono accuratamente organizzati nella directory 'test/[nomeCartellaDaTestare]', fornendo una struttura chiara e ordinata. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth] {D4/img/test_folders.png}
+    \caption{Cartella test}
+\end{figure}
+All'interno di questa directory sono presenti tre cartelle che contengono complessivamente undici file con estensione ".test.js", i quali rappresentano i file dedicati all'esecuzione dei test per il nostro sistema. Per ciascun modello che dispone di API definite, esiste un file specifico in cui sono dettagliati tutti i casi di test corrispondenti a tali API.
+\newline
+\newline
+Analizziamo la tipica struttura di un file .test.js dedicato al testing delle API, prendendo il file login.test.js come esempio. Tale struttura è uniforme tra tutti i file di test.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth] {D4/img/login_testing.png}
+    \caption{Struttura file test}
+\end{figure}
+Nel file .test.js, iniziamo importando i moduli per il testing delle API, tra il link del server in locale e mongoose per stabilire una connessione al database.
 
+All'interno del metodo beforeAll(), definiamo le operazioni da eseguire all'inizio dell'esecuzione del codice, ovvero la connessione al database con un timeout di 10 secondi.
 
+Il metodo afterAll() viene chiamato alla fine del file e si occupa di chiudere la connessione al database. 
+Questi due metodi sono presenti in ogni file di test, consentendo la connessione al database per chiamare effettivamente le varie API.
 
+Ogni API è testata all'interno della corrispondente suite. Viene utilizzato un metodo describe() per ogni API, all'interno del quale sono presenti diversi metodi test() che implementano i casi di test effettivi. Ogni API è testata più volte, verificando tutti i possibili status code di ritorno, alcuni anche più volte.
+
+\subsubsection{Risultati del testing}
+Per eseguire i test, abbiamo prima incluso il seguente script nel file package.json: 
+\begin{center} \textit{"test": "jest --coverage"} \end{center}
+Così facendo eseguendo il comando npm test dalla directory principale del progetto, verranno eseguiti tutti i file .test.js che abbiamo definito.
+\newline
+Di seguito i risultati dei test: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth] {D4/img/test.png}
+    \caption{Test}
+\end{figure}
+Tutte le test suites sono state eseguite e tutti i 31 casi di test (definiti dai metodi test()) risultano passati.
+
+Non è stato possibile effettuare il coverage dell'applicazione a causa di un problema di jest. Avendo jest un contesto di esecuzione diverso rispetto a quello delle API non è possibile effetuare un coverage. 
+\newpage
+\subsection{GitHub repository e informazioni sul deployment}
+Al seguente URL è presente la repository del progetto https://github.com/MountainWonders-G24/code .
+\newline
+\newline
+\newline
+Il deployment del progetto è stato effettuato su vercel (https://vercel.com/) al seguente link:
+\begin{center} \textit{ https://mountain-wonders.vercel.app/ } \end{center}
+\newline
+Nel caso si voglia eseguire il progetto in locale basterà scaricare la cartella nel link citato  sopra, in seguito si dovrà creare il file .env nella directory principale che deve essere formattato come segue: \newline
+\newline
+******************************************************************************
+\newline ATLAS\_URI = *link al db di mongo* \newline
+jwt\_secret = *chiave segreta* \newline \newline
+******************************************************************************
+\newline
+In seguito basterà eseguire il comando npm install nella directory principale del progetto per scaricare tutti i moduli utilizzati. Successivamente, eseguire il comando npm start nella directory principale del progetto. Non appena verranno visualizzate le seguenti righe sulla console:
+\newline
+\newline
+******************************************************************************
+\newline 
+> mountainwonders@0.1.0 dev \newline
+> next dev \newline
+
+   ▲ Next.js 14.0.3 \newline
+   - Local: http://localhost:3000 \newline
+   - Environments: .env \newline
+\newline
+  Ready in 4.3s \newline \newline
+******************************************************************************
+\newline
+Ora collegandosi all’URL http://localhost:3000/ si riuscirà a navigare nel sito.
+\newline 
+\subsubsection{Nota per la documentazione}
+La documentazione delle API sarà disponibile a http://localhost:3000/ . 
 \end{document}
