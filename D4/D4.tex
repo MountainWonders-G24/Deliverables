@@ -73,7 +73,7 @@
     \Huge \textbf{Ingegneria del software\\}
   
     \vspace{1.5 cm} 
-    \Large\textsc{Documento dei requisiti\\} 
+    \Large\textsc{Documento di sviluppo\\} 
     \vspace{3 cm} 
     \Huge\textsc{Mountain Wonders\\}
     \Large{Gruppo G24}
@@ -272,7 +272,7 @@ Segue poi il modello della montagna.
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth] {D4/img/mountain_model.png}
+    \includegraphics[width=0.4\textwidth] {D4/img/mountain_model.png}
     \caption{Logout api diagram}
     \end{figure}
 Questo modello è dotato di parametri necessari per il riconoscimento da parte degli utenti. \newline
@@ -283,7 +283,7 @@ L'ultimo modello dell'applicazione è quello che rappresenta i rifugi.
 
     \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth] {D4/img/refuge_model.png}
+    \includegraphics[width=0.4\textwidth] {D4/img/refuge_model.png}
     \caption{Logout api diagram}
     \end{figure}
 
@@ -366,11 +366,46 @@ Verranno descritte di seguito le API utilizzate per una montagna:
     In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
 \end{itemize}
 
+\newpage
 \subsection{API documentation - Swagger}
-Il link per poter visitare il sito web è il seguente: 
+
+Le API sviluppate per l'applicazione e descritte nel dettaglio precedentemente sono state documentate utilizzando Swagger. Swagger permette di avere una paronamica di tutte le api e di avere più informazioni su di esse.
+Il link per poter visitare la documentazione delle api è il seguente: 
 \newline
 
-\centerline{\url{ https://mountain-wonders.vercel.app/ }}
+\centerline{\url{ https://mountain-wonders.vercel.app/api-docs }}
+
+Le API presenti per i rifugi sono le seguenti:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/swagger_refuge.png}
+    \caption{Api rifugi}
+\end{figure}
+
+Le API presenti per le montagne:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/swagger_mountain.png}
+    \caption{Api montagne}
+\end{figure}
+
+Le API presenti per l'autenticazione
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/swagger_auth.png}
+    \caption{Api autenticazione}
+\end{figure}
+
+
+
+E' presente una breve descrizione per ogni api, e una volta selezionata, è possibile visualizzare più dettagli, come il tipo di API, i parametri presenti e tutte le possibili risposte. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/swagger-api.png}
+    \caption{Esempio Api}
+\end{figure}
+
 
 \subsection{Pagine frontend}
 Di seguito andremo a descrivere in modo dettagliato ciascuna pagina frontend del sito sviluppata dal team e le operazioni possibili per ogni tipologia di utente ch evisita il sito.
@@ -484,7 +519,7 @@ Dopo  aver cliccato il bottone "aggiungi" del form, verrà mostrato il messaggio
 Per condurre le operazioni di testing, abbiamo utilizzato la libreria Jest in combinazione con il metodo fetch per verificare e chiamare le API. Tutti i test svolti sono accuratamente organizzati nella directory 'test/[nomeCartellaDaTestare]', fornendo una struttura chiara e ordinata. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth] {D4/img/test_folders.png}
+    \includegraphics[width=0.4\textwidth] {D4/img/test_folders.png}
     \caption{Cartella test}
 \end{figure}
 All'interno di questa directory sono presenti tre cartelle che contengono complessivamente undici file con estensione ".test.js", i quali rappresentano i file dedicati all'esecuzione dei test per il nostro sistema. Per ciascun modello che dispone di API definite, esiste un file specifico in cui sono dettagliati tutti i casi di test corrispondenti a tali API.
@@ -493,7 +528,7 @@ All'interno di questa directory sono presenti tre cartelle che contengono comple
 Analizziamo la tipica struttura di un file .test.js dedicato al testing delle API, prendendo il file login.test.js come esempio. Tale struttura è uniforme tra tutti i file di test.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth] {D4/img/login_testing.png}
+    \includegraphics[width=1\textwidth] {D4/img/login_testing.png}
     \caption{Struttura file test}
 \end{figure}
 Nel file .test.js, iniziamo importando i moduli per il testing delle API, tra il link del server in locale e mongoose per stabilire una connessione al database.
@@ -526,8 +561,8 @@ Al seguente URL è presente la repository del progetto https://github.com/Mounta
 \newline
 \newline
 Il deployment del progetto è stato effettuato su vercel (https://vercel.com/) al seguente link:
-\begin{center} \textit{ https://mountain-wonders.vercel.app/ } \end{center}
-\newline
+\begin{center} \textit{\url{ https://mountain-wonders.vercel.app/ }} \end{center}
+
 Nel caso si voglia eseguire il progetto in locale basterà scaricare la cartella nel link citato  sopra, in seguito si dovrà creare il file .env nella directory principale che deve essere formattato come segue: \newline
 \newline
 ******************************************************************************
@@ -553,5 +588,5 @@ In seguito basterà eseguire il comando npm install nella directory principale d
 Ora collegandosi all’URL http://localhost:3000/ si riuscirà a navigare nel sito.
 \newline 
 \subsubsection{Nota per la documentazione}
-La documentazione delle API sarà disponibile a http://localhost:3000/ . 
+La documentazione delle API sarà disponibile a http://localhost:3000/api-docs . 
 \end{document}
