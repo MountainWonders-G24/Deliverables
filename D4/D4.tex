@@ -1,0 +1,557 @@
+\documentclass[a4paper,12pt]{article}
+
+%\begin{figure}[htp]
+%    \centering
+%    \includegraphics[width=0.75\textwidth]{}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%  PREAMBLE  %%%%
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[english,italian]{babel}
+\usepackage{graphicx}     % Per includere immagini
+\usepackage{subcaption}   % Per utilizzare subfigure
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+\hypersetup{hidelinks}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{minipage-marginpar}
+\usepackage{fancyhdr}
+\usepackage[bottom]{footmisc}
+\usepackage{lastpage}
+
+\usepackage{enumitem}
+\usepackage{tabularx}
+
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\shortstack[r]{Versione documento: 0.01 \\ Gruppo: G24}}
+
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage/\pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headruleskip}{3pt}
+\setlength{\headheight}{30pt}
+
+\renewcommand{\footrulewidth}{2pt}
+
+\setlist[itemize]{itemsep=0.25em,topsep=0pt}
+\setlist[enumerate]{itemsep=0.25em,topsep=0pt,align=left}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%  DOCUMENT  %%%%
+%%%%%%%%%%%%%%%%%%%%
+
+\title{}
+\author{Gruppo G24}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{center}
+
+    \vspace{2 cm}
+
+    \begin{tabular*}{\textwidth}{ c @{\extracolsep{\fill}} c }
+        \includegraphics[width=0.3\textwidth]{marchio_unitrento.pdf} & \shortstack{\Large{Dipartimento di Ingegneria} \\ \Large{e Scienza dell'Informazione}}
+    \end{tabular*}
+
+    \vspace{5 cm} 
+  
+    \Huge \textbf{Ingegneria del software\\}
+  
+    \vspace{1.5 cm} 
+    \Large\textsc{Documento dei requisiti\\} 
+    \vspace{3 cm} 
+    \Huge\textsc{Mountain Wonders\\}
+    \Large{Gruppo G24}
+  
+    \vspace{2 cm} 
+  
+    \Large{Anno accademico 2023/2024}
+\end{center}
+
+\newpage
+\tableofcontents
+
+\pagestyle{fancy}
+\newpage
+\section{Scopo del documento}
+
+Questo documento riporta la parte di sviluppo del software.
+In particolare contiene i seguenti diagrammi:
+\begin{itemize}
+    \item User flow diagram
+    \item Resource diagram
+    \item API diagram
+\end{itemize}
+Questi saranno la base per la corretta implementazione del codice per l'applicazione web di Mountain Wonders. \newline
+Segue poi la parte di sviluppo del codice dell'applicazione, in cui verranno mostrati:
+\begin{itemize}
+    \item Struttura del progetto
+    \item Modelli utilizzati
+    \item Presetazione api
+    \item Presentazione front end
+\end{itemize}
+    
+\newpage
+\section{User flow}
+In questa sezione viene inserito lo user flow diagram, diagramma che viene utilizzato per visualizzare le possibili azioni eseguite da un utente, in modo da comprendere poi le eventuali operazioni da eseguire sul database.
+Viene di seguito inserita una legenda per una migliore comprensione del diagramma:
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1\textwidth] {D4/img/user_flow_legend.png}
+    \caption{User flow diagram legend}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1.1\textwidth] {D4/img/user_flow.png}
+    \caption{User flow diagram}
+\end{figure}
+
+\newpage
+\section{Resource diagram}
+Questo diagramma viene utilizzato per comprendere gli oggetti presenti all'interno del database, come ad esempio gli utenti, e definire quali operazioni sono possibili fare per ognuno di essi. \newline
+Partendo dal class diagram, sono state individuate le risorse principali su cui si basa la nostra applicazione:
+\begin{itemize}
+    \item Utente
+    \item Rifugio
+    \item Montagna
+\end{itemize}
+Da queste abbiamo poi sviluppato altre risorse partendo dai metodi delle risorse iniziali. \newline
+Per ogni risorsa vengono evidenziati i metodi necessari per interagire con il database e se si tratta di richieste di tipo GET, POST oppure DELETE. Vengono poi specificati anche i parametri che verranno utilizzati, inserendo body qualora siano richiesti tutti i parametri della risorsa. \newline
+Per ogni metodo di una risorsa viene inoltre mostrato se il metodo vada ad applicare modifiche nella parte di frontend o di backend dell'applicazione.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=1.1\textwidth] {D4/img/resource_diagram.png}
+    \caption{Resource diagram}
+\end{figure}
+
+\newpage
+\section{API diagram}
+In questo diagramma viene specificato, per ogni operazione che deve essere eseguita su una risorsa all'interno del database, di quali input e quali output necessita. \newline
+Queste informazioni saranno poi utilizzate per la creazione delle API in seguito.\newline 
+Ogni API può tornare un diverso errore a seconda del comportamento ottenuto dal database, che può essere:
+\begin{itemize}
+    \item 200: azione eseguita correttamente
+    \item 201: elemento creato correttamente
+    \item 401: operazione non permessa perchè non si è fatto l'accesso
+    \item 403: operazione non permessa perchè non si hanno i permessi adeguati
+    \item 404: elemento non trovato
+    \item 409: dato già presente nel database
+    \item 415: formato del file non supportato
+\end{itemize}
+
+Per maggior chiarezza, il diagramma delle api è stato suddiviso.
+\begin{itemize}
+    \item Api diagram 1
+    \begin{figure}[H]
+    \centering
+   \includegraphics[width=0.6\textwidth] {D4/img/api_diagram_register.png}
+    \caption{Register api diagram}
+    \end{figure}
+    
+    \item Api diagram 2
+    \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth] {D4/img/api_diagram_login.png}
+    \caption{Login api diagram}
+\end{figure}
+
+    \item Api diagram 3
+        \begin{figure}[H]
+       \centering
+       \includegraphics[width=0.6\textwidth] {D4/img/api_diagram_current_user.png}
+        \caption{Current user api diagram}
+    \end{figure}
+
+    \item Api diagram 4
+    \begin{figure}[H]
+    \centering
+   \includegraphics[width=0.8\textwidth] {D4/img/api_diagram_mountains.png}
+    \caption{Mountains api diagram}
+\end{figure}
+    \item Api diagram 5
+    \begin{figure}[H]
+   \centering
+   \includegraphics[width=1.1\textwidth] {D4/img/api_diagram_refuges.png}
+    \caption{Refuges api diagram}
+\end{figure}
+    \item Api diagram 6
+    \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\textwidth] {D4/img/api_diagram_logout.png}
+    \caption{Logout api diagram}
+\end{figure}
+\end{itemize}
+
+\newpage
+\section{Sviluppo applicazione}
+Verrà di seguito presentato come è stata sviluppata la nostra applicazione web, mostrando prima i modelli utilizzati all'interno del database per salvare le informazioni necessarie, proseguendo poi con la descrizione delle API per poi concludere con la descrizione del frontend.
+
+\subsection{Struttura progetto}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.3\textwidth] {D4/img/project_structure.png}
+    \caption{Stuttura del progetto}
+\end{figure}
+La cartella principale è app, che contiene le sottocartelle per:
+\begin{itemize}
+    \item api
+    \item pagine front-end
+    \item test
+\end{itemize}
+
+La cartella api contiene le api necessarie per l'applicazione, che verranno descritte in dettaglio nella sezione "Swagger".
+\newline
+La cartella auth contiene lo sviluppo frontend per le pagine di login e registrazione di un utente.
+\newline
+La cartella main-pages contiene lo sviluppo frontend per le pagine principali dell'applicazione, ossia la pagina delle montagne e quella dei rifugi.
+\newline
+Nella cartella modelli sono contenuti i modelli utilizzati dall'applicazione, ossia il modello utente, montagna e rifugi. Questi verranno descritti meglio in seguito nella sezione modelli. \newline
+Nella cartella test sono contenuti tutti i test eseguiti sulle api.
+
+\subsection{Dipendenze}
+Elenchiamo di seguito le dipendenze esterne utilizzate dall'applicazione Mountain Wonders:
+\begin{itemize}
+    \item mongoose from mongoose utilizzato per la connessione al database
+    \item nextRequest, nextResponse from next/server per una continua interazione tra database e applicazione
+    \item jwt from jsonwebtoken per la criptatura dei dati lato client
+    \item cookies from next/headers per il salvataggio dello stato al login di un utente
+    \item bcrypt from bcryptjs per la protezione dei dati lato server 
+    \item axios from axios per la comunicazione con il server
+    \item useRouter from next/navigation per la redirezione delle api
+    \item React from react per la creazione dell'interfaccia utente
+    \item swagger-ui-react/swagger-ui.css per la documentazione delle api
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\subsection{Modelli}
+Verranno di seguito mostrati i modelli utilizzati per lo sviluppo dell'applicazione, estrapolati a partire dal diagramma delle risorse.
+
+\subsubsection{Modello User}
+Il primo modello è quello dell'utente che si registra nella nostra applicazione, che è stato chiamato User.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth] {D4/img/user_model.png}
+    \caption{Logout api diagram}
+    \end{figure}
+
+I dati nome, cognome sono necessari per l'identificazione di un utente, mentre gli attributi email e password saranno poi utilizzati per permettere all'utente di effettuare il login all'interno dell'applicazione web. \newline
+L'attributo isAdmin viene utilizzato per verificare quali permessi ha l'utente loggato e permettergli di effettuare detemrinate operazioni o meno
+
+\subsubsection{Modello Mountain}
+Segue poi il modello della montagna.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth] {D4/img/mountain_model.png}
+    \caption{Logout api diagram}
+    \end{figure}
+Questo modello è dotato di parametri necessari per il riconoscimento da parte degli utenti. \newline
+In questo modo l'utente prima di aggiungere un rifugio ad una montagna, può verificare se la montagna a cui vuole aggiungere il rifugio è quella scelta.
+
+\subsubsection{Modello Refuge}
+L'ultimo modello dell'applicazione è quello che rappresenta i rifugi.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth] {D4/img/refuge_model.png}
+    \caption{Logout api diagram}
+    \end{figure}
+
+Ogni rifugio è dotato di nome, descrizione, mountainId e image che forniscono dei dettagli sul rifugio agli utenti che lo visitano all'interno del sito. \newline
+Ha inoltre il parametro avgRating che sarà settato alla creazione del rifugio e poi rimarrà sempre uguale dal momento che il team ha deciso di non implementare la parte di applicazione necessaria alla modifica di questo attributo. \newline
+Il parametro \_\_v verrà utilizzato per mostrare tutti i rifugi presenti all'interno del database dal momento che usando vercel per il deployment il team ha riscontato dei problemi durante il fetching.
+
+\newpage
+\subsection{API}
+Vengono di seguito descritte le API utilizzate per lo scambio di informazioni tra applicazione e database.
+
+\subsubsection{API modello User}
+Verranno descritte di seguito le API utilizzate per un utente:
+
+\begin{itemize}
+    \item currentUser: \newline
+    questa API viene utilizzata per identificare il ruolo dello user attualmente loggato all'interno del sito. \newline
+    Si tratta di una richiesta di tipo GET. \newline
+    Non riceve alcun parametro in input dal momento che gli attributi di cui ha bisogno per verificare il ruolo di un utente li recupera dai cookie, utilizzando il package cookies di next/headers. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+    \item login: \newline
+    questa API viene utilizzata per permettere ad un utente di loggarsi all'interno del sito ed eseguire azioni specifiche permesse soltanto ad un utente loggato. \newline
+    Si tratta di una richiesta di tipo POST essendo che ha bisogno di inviare dei dati al database per confrontarli con quelli già presenti. \newline
+    Come parametro in input contiene i dati inseriti nel form di login da parte dell'utente, ossia email e password. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+    \item logout: \newline
+    questa API viene utilizzata per permettere ad un utente di scollegarsi dal sito una volta terminato l'utilizzo. \newline
+    Si tratta di una richiesta di tipo GET. \newline
+    Non riceve alcun parametro in input dal momento che gli attributi di cui ha bisogno per verificare il ruolo di un utente li recupera dai cookie, utilizzando il package cookies di next/headers. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+    \item register: \newline
+    questa API viene utilizzata per permettere ad un utente di effettuare la registrazione all'interno del sito per eseguire azioni specifiche permesse soltanto ad un utente loggato. \newline
+    Si tratta di una richiesta di tipo POST essendo che ha bisogno di inviare dei dati al database per confrontarli con quelli già presenti. \newline
+    Come parametro in input contiene i dati inseriti nel form di registrazione da parte dell'utente, ossia nome, cognome, email e password. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta qualora l'utente sia stato inserito correttamente o dell'errore e il relativo messaggio.
+\end{itemize}
+
+\subsubsection{API modello Mountain}
+Verranno descritte di seguito le API utilizzate per una montagna:
+
+\begin{itemize}
+    \item mountains: \newline
+    questa API viene utilizzata per recuperare tutte le montagne presenti all'interno del database. \newline
+    Si tratta di una richiesta di tipo GET perchè è necessario recuperare dei dati già presenti all'interno del database. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio. \newline
+    \item mountainId: \newline
+    questa API viene utilizzata per ritornare le informazioni di una montagna in modo da mostrarle sul sito. \newline
+    Si tratta di una richiesta di tipo GET. \newline
+    Riceve in input un solo parametro, tramite path, ossia l'id della montagna da trovare. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+    \item search: \newline
+    questa API viene utilizzata per effettuare una ricerca sul nome delle montagne presenti all'intenro del database, che corrispondano parzialmente o in modo totale alla stringa inserita. \newline
+    Si tratta di una richiesta di tipo GET perchè è necessario recuperare dei dati già presenti all'interno del database. \newline
+    Come parametro in input riceve la stringa di ricerca inserita da parte dell'utente che verrà confrontata con i nomi delle montagne presenti all'interno del database.\newline 
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+\end{itemize}
+
+\subsubsection{API modello Refuges}
+Verranno descritte di seguito le API utilizzate per una montagna:
+
+\begin{itemize}
+    \item mountainId: \newline
+    questa API viene utilizzata per recuperare tutti i rifugi di una montagna presenti all'interno del database. Nel caso la montagna sia 0, vengono recuperati tutti i rifugi all'interno del database \newline
+    Si tratta di una richiesta di tipo GET perchè è necessario recuperare dei dati già presenti all'interno del database. \newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio. \newline
+    \item addRefuge: \newline
+    questa API viene utilizzata per permettere ad un utente loggato all'interno del sito di aggiungere un rifugio al database. Prima di inserirlo, controlla se un rifugio con gli stessi parametri esiste già. \newline
+    Si tratta di una richiesta di tipo POST essendo che ha bisogno di inviare dei dati al database per confrontarli con quelli già presenti.\newline
+    Come parametro in input riceve il rifugio da inserire con i parametri inseriti dall'utente nell'apposito form per l'aggiunta.\newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+     \item delete: \newline
+    questa API viene utilizzata per permettere all'utente admin di eliminare un rifugio nel caso non rispetti alcune delle norme citate all'interno del documento dei requisiti. \newline
+    Si tratta di una richiesta di tipo DELETE perchè è necessario eliminare dei dati presenti all'interno del database. \newline
+    Come parametro in input riceve l'id del rifugio da eliminare dal database.\newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+    \item search: \newline
+    questa API viene utilizzata per effettuare una ricerca sul nome dei rifugi presenti all'intenro del database, che corrispondano parzialmente o in modo totale alla stringa inserita. \newline
+    Si tratta di una richiesta di tipo GET perchè è necessario recuperare dei dati già presenti all'interno del database. \newline
+    Come parametro in input riceve la stringa di ricerca inserita da parte dell'utente che verrà confrontata con i nomi di rifugi presenti all'interno del database.\newline
+    In output viene ritornata una NextResponse contenente lo stato della risposta o dell'errore e il relativo messaggio.
+\end{itemize}
+
+\subsection{API documentation - Swagger}
+Il link per poter visitare il sito web è il seguente: 
+\newline
+
+\centerline{\url{ https://mountain-wonders.vercel.app/ }}
+
+\subsection{Pagine frontend}
+Di seguito andremo a descrivere in modo dettagliato ciascuna pagina frontend del sito sviluppata dal team e le operazioni possibili per ogni tipologia di utente ch evisita il sito.
+
+\subsubsection{Home page}
+Questa è la pagina in cui verranno reindirizzati gli utenti che vogliono visitare il sito.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/home_page.png}
+    \caption{Home page}
+\end{figure}
+Le possibili operazioni per ciascuna tipologia di utente sono visualizzare tutti i rifugi presenti oppure le montagne presenti all'interno del database, utilizzando l'apposito bottone.
+
+In alto è presente una navbar, comune ad ogni pagina del sito.
+I bottoni che possono essere cliccati sono:
+\begin{itemize}
+    \item home
+    \item profile
+\end{itemize}
+
+Qualora venga cliccato il bottone home, l'utente (sia anonimo, che registrato, che amministratore) viene reinidirizzato alla home page. \newline
+Nel caso in cui venga invece cliccato il bottone Profile:
+\begin{itemize}
+    \item se il bottone viene cliccato da un utente registrato all'interno del sito, esso verrà ridirezionato alla home page
+    \item se il bottone viene cliccato da un utente anonimo, esso verrà ridirezionato alla pagina di login.
+\end{itemize}
+
+\subsubsection{Pagina login}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/login.png}
+    \caption{Pagina login}
+\end{figure}
+Questa pagina permette ad un utente anonimo di loggarsi all'interno del sito per effettuare operazioni concesse solamente agli utenti registrati. \newline
+Nel caso in cui l'utente abbia già precedentemente creato un account all'interno del database, sarà sufficiente inserire la mail e la password utilizzate durante la registrazione per poi collegarsi. \newline
+Il database provvederà di conseguenza a verificare le credenziali con quelle presenti all'interno del database e a mostrare all'utente il messaggio nel caso il login sia stato eseguito correttamente o meno.
+
+\subsubsection{Pagina registrazione}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/register_1.png}
+    \caption{Pagina registrazione 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/register_2.png}
+    \caption{Pagina registrazione 2}
+\end{figure}
+Questa pagina permette ad un utente anonimo di loggarsi all'interno del sito per effettuare operazioni concesse solamente agli utenti registrati. \newline
+Nel caso in cui l'utente non abbia ancora creato un account all'interno del database, dovrà crearne uno inserendo gli appositi dati all'interno del form di registrazione. \newline
+Il database provvederà quindi a verificare che non sia già presente un account con la stessa mail e a mostrare all'utente il messaggio nel caso la registrazione sia stata eseguita correttamente o meno.
+
+\subsubsection{Pagina montagne}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/mountains_page.png}
+    \caption{Pagina montagne}
+\end{figure}
+Questa pagina mostra a qualsiasi utente che visita il sito, l'elenco delle montagne presenti all'interno del database. \newline
+Dal momento che in questa versione nè utenti registrati nè admin nè utenti anonimi possono aggiungere una montagna, la visualizzazione della pagina sarà uguale per tutti gli utenti.
+Le operazioni possibili all'interno della pagina sono:
+\begin{itemize}
+    \item ricerca di una montagna
+    \item selezione di una montagna
+\end{itemize}
+Quando si ricerca una montagna, è possibile inserire all'interno della barra di ricerca una qualsiasi stringa: se la stringa è contenuta in almeno uno dei nomi delle montagne, la ricerca mostrerà queste montagne, con i relativi dettagli. \newline
+Altrimenti se non sono presenti montagne il cui nome contiene la sottostringa inserita dall'utente, verranno mostrate tutte le montagne presenti nel database e verrà mostrato un errore che indica che non sono state trovate montagne. \newline
+Se invece l'utente seleziona una montagna, viene ridirezionato alla pagina seguente.
+
+\subsubsection{Pagina rifugi di una montagna}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/mountain_page.png}
+    \caption{Pagina rifugi di una montagna}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth] {D4/img/add_refuge.png}
+    \caption{Aggiunta rifugio in una montagna}
+\end{figure}
+Questa pagina permette a qualsiasi utente di visualizzare tutti i rifugi di una montagna e i relativi dettagli.\newline
+Per gli utenti anonimi che visitano il sito, l'unica operazione che possono eseguire è la ricerca di un rifugio tra quelli presenti all'interno della montagna selezionata in precedenza. \newline
+E' possibile inserire all'interno della barra di ricerca una qualsiasi stringa: se la stringa è contenuta in almeno uno dei nomi dei rifugi, la ricerca mostrerà queste montagne con i relativi dettagli. \newline
+Altrimenti se non sono presenti rifugi il cui nome contiene la sottostringa inserita dall'utente, verranno mostrati tutti i rifugi della montagna selezionata e verrà mostrato un errore che indica che non sono stati trovati rifugi. \newline
+Se invece l'utente seleziona una montagna, viene ridirezionato alla pagina seguente. \newline
+Nel caso in cui l'utente sia amministratore, oltre alla ricerca avrà anche il permesso per poter eliminare un rifugio qualora non rispettasse alcune delle norme citate all'interno del documento dei requisiti: dopo aver cliccato sul bottone per l'eliminazione di un rifugio, nella pagina verrà mostrato il messaggio di rosposta, nel caso l'operazione sia andata a buon fine o meno. \newline
+Nel caso in cui l'utente sia un utente registrato, oltre alla ricerca avrà anche il permesso per poter aggiungere un rifugio all'interno del database: dopo aver cliccato sul bottone per l'aggiunta di un rifugio, nella pagina verrà mostrato un form in cui l'utente dovrà inserire i dettagli del nuovo rifugio. \newline
+Dopo  aver cliccato il bottone "aggiungi" del form, verrà mostrato il messaggio di risposta, nel caso l'operazione sia andata a buon fine o meno.
+
+
+\subsubsection{Pagina rifugi}
+\begin{figure}[H]
+    \centering    \includegraphics[width=1\textwidth] {D4/img/refuge_page.png}
+    \caption{Pagina rifugi}
+\end{figure}
+\begin{figure}[H]
+    \centering    \includegraphics[width=1\textwidth] {D4/img/add_refuge_all.png}
+    \caption{Aggiunta rifugio alla lista}
+\end{figure}
+Questa pagina permette a qualsiasi utente di visualizzare tutti i rifugi presenti all'interno del database e i relativi dettagli. \newline
+Per gli utenti anonimi che visitano il sito, l'unica operazione che possono eseguire è la ricerca di un rifugio tra quelli presenti all'interno del database. \newline
+E' possibile inserire all'interno della barra di ricerca una qualsiasi stringa: se la stringa è contenuta in almeno uno dei nomi dei rifugi, la ricerca mostrerà questi rifugi con i relativi dettagli. \newline
+Altrimenti se non sono presenti rifugi il cui nome contiene la sottostringa inserita dall'utente, verranno mostrati tutti i rifugi della montagna selezionata e verrà mostrato un errore che indica che non sono stati trovati rifugi. \newline
+Se invece l'utente seleziona una montagna, viene ridirezionato alla pagina seguente.
+Nel caso in cui l'utente sia amministratore, oltre alla ricerca avrà anche il permesso per poter eliminare un rifugio qualora non rispettasse alcune delle norme citate all'interno del documento dei requisiti: dopo aver cliccato sul bottone per l'eliminazione di un rifugio, nella pagina verrà mostrato il messaggio di rosposta, nel caso l'operazione sia andata a buon fine o meno. \newline
+Nel caso in cui l'utente sia un utente registrato, oltre alla ricerca avrà anche il permesso per poter aggiungere un rifugio all'interno del database: dopo aver cliccato sul bottone per l'aggiunta di un rifugio, nella pagina verrà mostrato un form in cui l'utente dovrà inserire i dettagli del nuovo rifugio. \newline
+Dopo  aver cliccato il bottone "aggiungi" del form, verrà mostrato il messaggio di risposta, nel caso l'operazione sia andata a buon fine o meno.
+
+\newpage
+\subsection{Testing}
+Per condurre le operazioni di testing, abbiamo utilizzato la libreria Jest in combinazione con il metodo fetch per verificare e chiamare le API. Tutti i test svolti sono accuratamente organizzati nella directory 'test/[nomeCartellaDaTestare]', fornendo una struttura chiara e ordinata. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth] {D4/img/test_folders.png}
+    \caption{Cartella test}
+\end{figure}
+All'interno di questa directory sono presenti tre cartelle che contengono complessivamente undici file con estensione ".test.js", i quali rappresentano i file dedicati all'esecuzione dei test per il nostro sistema. Per ciascun modello che dispone di API definite, esiste un file specifico in cui sono dettagliati tutti i casi di test corrispondenti a tali API.
+\newline
+\newline
+Analizziamo la tipica struttura di un file .test.js dedicato al testing delle API, prendendo il file login.test.js come esempio. Tale struttura è uniforme tra tutti i file di test.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth] {D4/img/login_testing.png}
+    \caption{Struttura file test}
+\end{figure}
+Nel file .test.js, iniziamo importando i moduli per il testing delle API, tra il link del server in locale e mongoose per stabilire una connessione al database.
+
+All'interno del metodo beforeAll(), definiamo le operazioni da eseguire all'inizio dell'esecuzione del codice, ovvero la connessione al database con un timeout di 10 secondi.
+
+Il metodo afterAll() viene chiamato alla fine del file e si occupa di chiudere la connessione al database. 
+Questi due metodi sono presenti in ogni file di test, consentendo la connessione al database per chiamare effettivamente le varie API.
+
+Ogni API è testata all'interno della corrispondente suite. Viene utilizzato un metodo describe() per ogni API, all'interno del quale sono presenti diversi metodi test() che implementano i casi di test effettivi. Ogni API è testata più volte, verificando tutti i possibili status code di ritorno, alcuni anche più volte.
+
+\subsubsection{Risultati del testing}
+Per eseguire i test, abbiamo prima incluso il seguente script nel file package.json: 
+\begin{center} \textit{"test": "jest --coverage"} \end{center}
+Così facendo eseguendo il comando npm test dalla directory principale del progetto, verranno eseguiti tutti i file .test.js che abbiamo definito.
+\newline
+Di seguito i risultati dei test: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth] {D4/img/test.png}
+    \caption{Test}
+\end{figure}
+Tutte le test suites sono state eseguite e tutti i 31 casi di test (definiti dai metodi test()) risultano passati.
+
+Non è stato possibile effettuare il coverage dell'applicazione a causa di un problema di jest. Avendo jest un contesto di esecuzione diverso rispetto a quello delle API non è possibile effetuare un coverage. 
+\newpage
+\subsection{GitHub repository e informazioni sul deployment}
+Al seguente URL è presente la repository del progetto https://github.com/MountainWonders-G24/code .
+\newline
+\newline
+\newline
+Il deployment del progetto è stato effettuato su vercel (https://vercel.com/) al seguente link:
+\begin{center} \textit{ https://mountain-wonders.vercel.app/ } \end{center}
+\newline
+Nel caso si voglia eseguire il progetto in locale basterà scaricare la cartella nel link citato  sopra, in seguito si dovrà creare il file .env nella directory principale che deve essere formattato come segue: \newline
+\newline
+******************************************************************************
+\newline ATLAS\_URI = *link al db di mongo* \newline
+jwt\_secret = *chiave segreta* \newline \newline
+******************************************************************************
+\newline
+In seguito basterà eseguire il comando npm install nella directory principale del progetto per scaricare tutti i moduli utilizzati. Successivamente, eseguire il comando npm start nella directory principale del progetto. Non appena verranno visualizzate le seguenti righe sulla console:
+\newline
+\newline
+******************************************************************************
+\newline 
+> mountainwonders@0.1.0 dev \newline
+> next dev \newline
+
+   ▲ Next.js 14.0.3 \newline
+   - Local: http://localhost:3000 \newline
+   - Environments: .env \newline
+\newline
+  Ready in 4.3s \newline \newline
+******************************************************************************
+\newline
+Ora collegandosi all’URL http://localhost:3000/ si riuscirà a navigare nel sito.
+\newline 
+\subsubsection{Nota per la documentazione}
+La documentazione delle API sarà disponibile a http://localhost:3000/ . 
+\end{document}
