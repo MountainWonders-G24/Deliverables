@@ -73,7 +73,7 @@
     \Huge \textbf{Ingegneria del software\\}
   
     \vspace{1.5 cm} 
-    \Large\textsc{Documento dei requisiti\\} 
+    \Large\textsc{Documento di architettura\\} 
     \vspace{3 cm} 
     \Huge\textsc{Mountain Wonders\\}
     \Large{Gruppo G24}
@@ -130,8 +130,7 @@ Questo insieme di classi racchiude le varie tipologie di account presenti nella 
 Le classi AccountAmministratore e AccountRegistrato ereditano gli argomenti della classe AccountAnonimo, non sarà possibile ereditare i metodi register() e login() poiché sono esclusivi della classe AccountAnonimo.\\
 Una volta effettuato il login, in base alla tipologia di utente saranno presenti metodi diversi per ciascun utente.
 \begin{figure}[H]
-   \centering
-    \includegraphics[width=0.6\textwidth]{D3/img/class_diagram_accounts.png}
+   \centering    \includegraphics[width=0.6\textwidth]{D3/img/class_diagram_accounts.png}
     \caption{Class diagram accounts}
 \end{figure}
 
@@ -142,7 +141,7 @@ La classe PaginaMontagne andrà a contenere l'elenco delle montagne presenti all
 La pagina Montagna, invece, rappresenta l'oggetto del mondo reale che verrà salvato all'interno del database, dotato di tutti gli attributi necessari.
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.35\textwidth] {D3/img/class_diagram_mountains.png}
+   \includegraphics[width=0.32\textwidth] {D3/img/class_diagram_mountains.png}
     \caption{Class diagram montagne}
 \end{figure}
 \newpage
